@@ -130,7 +130,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SFMLproject.cpp" />
+    <ClCompile Include="field.cpp" />
+    <ClCompile Include="gameController.cpp" />
+    <ClCompile Include="gameModel.cpp" />
+    <ClCompile Include="gameView.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="field.h" />
+    <ClInclude Include="gameController.h" />
+    <ClInclude Include="gameModel.h" />
+    <ClInclude Include="gameView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
