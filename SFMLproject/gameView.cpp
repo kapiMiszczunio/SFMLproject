@@ -1,6 +1,6 @@
 #include "gameView.h"
 
-void gameView::launch(double width, double height)
+int gameView::launch(float width, float height)
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "SAPER", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
@@ -24,15 +24,16 @@ void gameView::launch(double width, double height)
 				{
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 360 && sf::Mouse::getPosition(window).y > 240 && sf::Mouse::getPosition(window).y < 290)
 					{
-						cout << "EASY" << endl;
+						return 1;
+
 					}
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 410 && sf::Mouse::getPosition(window).y > 330 && sf::Mouse::getPosition(window).y < 380)
 					{
-						cout << "MEDIUM" << endl;
+						return 2;
 					}
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 360 && sf::Mouse::getPosition(window).y > 420 && sf::Mouse::getPosition(window).y < 470)
 					{
-						cout << "HARD" << endl;
+						return 3;
 					}
 				}
 			}

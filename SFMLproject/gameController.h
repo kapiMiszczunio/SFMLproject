@@ -11,13 +11,12 @@
 class gameController
 {
 public:
-
 	explicit gameController(gameModel& model, gameView& view);
 	void start_menu();
-
 
 private:
 	gameModel model;
 	gameView view;
+	int difficulty;
 };
 

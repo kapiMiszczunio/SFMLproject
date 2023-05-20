@@ -236,6 +236,11 @@ void gameModel::subFlag()
 	this->flaggedCells--;
 }
 
+int gameModel::getBoardSize()
+{
+	return this->boardSize;
+}
+
 string gameModel::getGameDifficulty()
 {
 	return this->gameDifficulty;

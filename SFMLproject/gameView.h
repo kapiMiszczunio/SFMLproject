@@ -6,7 +6,7 @@
 class gameView
 {
 public:
-	void launch(double width, double height);
+	int launch(float width, float height);
 	void draw_menu(sf::RenderWindow &window, sf::Font font);
 
 private:

@@ -20,5 +20,6 @@ public:
 	void setGameDifficulty(string difficulty);
 	void addFlag();
 	void subFlag();
+	int getBoardSize();
 };
 

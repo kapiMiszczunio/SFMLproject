@@ -7,6 +7,4 @@ int main()
 	gameView view;
 	gameController controller(model, view);
 	controller.start_menu();
-
-
 }
