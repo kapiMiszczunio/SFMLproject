@@ -13,6 +13,7 @@ private:
 
 public:
 	void generateBoard();
+	vector<vector<int>> generateGrid();
 	string getGameDifficulty();
 	string getGameStatus();
 	vector<vector<int>> getBoard();

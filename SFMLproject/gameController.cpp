@@ -28,4 +28,5 @@ void gameController::start_menu()
 		}
 		cout << endl;
 	}
+	view.play(600,600);
 }
