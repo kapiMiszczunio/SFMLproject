@@ -13,8 +13,8 @@ void gameModel::generateBoard()
 
 	//losowanie lokalizacji bomb i umiejscowienie ich na planszy | bomba = 9
 	for (int i = 0; i < this->numberOfBombs; i++) {
-		int x = rand() % 10;
-		int y = rand() % 10;
+		int x = rand() % this->boardSize;
+		int y = rand() % this->boardSize;
 		//cout << x << y << endl;
 		if (this->board[x][y] == 0) {
 			this->board[x][y] = 9;
@@ -40,7 +40,7 @@ void gameModel::generateBoard()
 						this->board[i + 1][j + 1] = temp + 1;
 					}
 				}
-				else if (i == 0 && j == 9) {
+				else if (i == 0 && j == this->boardSize-1) {
 					if (this->board[i][j - 1] != 9) {
 						temp = this->board[i][j - 1];
 						this->board[i][j - 1] = temp + 1;
@@ -54,7 +54,7 @@ void gameModel::generateBoard()
 						this->board[i + 1][j - 1] = temp + 1;
 					}
 				}
-				else if (i == 9 && j == 0) {
+				else if (i == this->boardSize - 1 && j == 0) {
 					if (this->board[i - 1][j] != 9) {
 						temp = this->board[i - 1][j];
 						this->board[i - 1][j] = temp + 1;
@@ -68,7 +68,7 @@ void gameModel::generateBoard()
 						this->board[i - 1][j + 1] = temp + 1;
 					}
 				}
-				else if (i == 9 && j == 9) {
+				else if (i == this->boardSize - 1 && j == this->boardSize - 1) {
 					if (this->board[i][j - 1] != 9) {
 						temp = this->board[i][j - 1];
 						this->board[i][j - 1] = temp + 1;
@@ -82,7 +82,7 @@ void gameModel::generateBoard()
 						this->board[i + 1][j - 1] = temp + 1;
 					}
 				}
-				else if (i == 0 && j < 9 && j > 0) {
+				else if (i == 0 && j < this->boardSize - 1 && j > 0) {
 					if (this->board[i][j - 1] != 9) {
 						temp = this->board[i][j - 1];
 						this->board[i][j - 1] = temp + 1;
@@ -104,7 +104,7 @@ void gameModel::generateBoard()
 						this->board[i + 1][j + 1] = temp + 1;
 					}
 				}
-				else if (i == 9 && j < 9 && j > 0) {
+				else if (i == this->boardSize - 1 && j < this->boardSize - 1 && j > 0) {
 					if (this->board[i][j - 1] != 9) {
 						temp = this->board[i][j - 1];
 						this->board[i][j - 1] = temp + 1;
@@ -126,7 +126,7 @@ void gameModel::generateBoard()
 						this->board[i - 1][j + 1] = temp + 1;
 					}
 				}
-				else if (j == 0 && i < 9 && i > 0) {
+				else if (j == 0 && i < this->boardSize - 1 && i > 0) {
 					if (this->board[i+1][j] != 9) {
 						temp = this->board[i+1][j];
 						this->board[i+1][j] = temp + 1;
@@ -148,7 +148,7 @@ void gameModel::generateBoard()
 						this->board[i][j+1] = temp + 1;
 					}
 				}
-				else if (j == 9 && i < 9 && i > 0) {
+				else if (j == this->boardSize - 1 && i < this->boardSize - 1 && i > 0) {
 					if (this->board[i+1][j] != 9) {
 						temp = this->board[i+1][j];
 						this->board[i+1][j] = temp + 1;
