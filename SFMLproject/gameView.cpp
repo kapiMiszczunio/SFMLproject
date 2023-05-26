@@ -1,9 +1,9 @@
 #include "gameView.h"
-#include "gameModel.h"
 
 int gameView::launch(float width, float height)
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "SAPER", sf::Style::Titlebar | sf::Style::Close);
+	setIcon(window);
 	sf::Font font;
 	sf::RectangleShape background;
 	background.setSize(sf::Vector2f(width, height));
@@ -92,22 +92,15 @@ void gameView::draw_menu(sf::RenderWindow &window, sf::Font font)
 	}
 }
 
-void gameView::play(float width, float height)
+void gameView::play(float width, float height,gameModel &model)
 {
 	sf::RenderWindow play(sf::VideoMode(width, height), "Saper");
+	setIcon(play);
 	sf::Texture blankField;
 	blankField.loadFromFile("../Images/blank.gif");
 	sf::Sprite spriteField(blankField);
-	//gameModel model;
-	//vector<vector<int>> grid = model.generateGrid();
 
-	int grid[10][10];
-
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			grid[i][j] = 10;
-		}
-	}
+	int boardSize = model.getBoardSize();
 
 	while (play.isOpen()) {
 		sf::Event playEvent;
@@ -121,17 +114,29 @@ void gameView::play(float width, float height)
 				}
 			}
 		}
+
+		int textureSize = 64;
+		float scale = 0.5;
+
 		play.clear(sf::Color::White);
-		for (int i = 0; i < 15; i++) {
-			for (int j = 0; j < 15; j++) {
-				spriteField.setTextureRect(sf::IntRect(0, 0, 64,64));
-				spriteField.setScale(0.5, 0.5);
-				spriteField.setPosition(i * 64*0.5, j * 64*0.5);
+
+		for (int i = 0; i < boardSize; i++) {
+			for (int j = 0; j < boardSize; j++) {
+				spriteField.setTextureRect(sf::IntRect(0, 0, textureSize, textureSize));
+				spriteField.setScale((width/ (boardSize+2))/60, (width/ (boardSize + 2))/60);
+				spriteField.setPosition((i+1)* width / (boardSize + 2), (j + 1) * width / (boardSize + 2));
 				play.draw(spriteField);
 			}
 		}
 		play.display();
 	}
+}
+
+void gameView::setIcon(sf::RenderWindow &window)
+{
+	sf::Image icon;
+	icon.loadFromFile("../Images/icon.png");
+	window.setIcon(icon.getSize().x,icon.getSize().y,icon.getPixelsPtr());
 }
 
 

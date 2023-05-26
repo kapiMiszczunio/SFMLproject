@@ -226,17 +226,17 @@ void gameModel::setGameDifficulty(string difficulty)
 	}
 }
 
-vector<vector<int>> gameModel::generateGrid() {
-	vector<vector<int>> grid;
-	for (int i = 0; i < this->boardSize; i++) {
-		vector<int> secondDeck;
-		grid.push_back(secondDeck);
-		for (int j = 0; j < this->boardSize; j++) {
-			grid[i].push_back(0);
-		}
-	}
-	return grid;
-}
+//vector<vector<int>> gameModel::generateGrid() {
+//	vector<vector<int>> grid;
+//	for (int i = 0; i < this->boardSize; i++) {
+//		vector<int> secondDeck;
+//		grid.push_back(secondDeck);
+//		for (int j = 0; j < this->boardSize; j++) {
+//			grid[i].push_back(0);
+//		}
+//	}
+//	return grid;
+//}
 
 void gameModel::addFlag()
 {
