@@ -4,6 +4,7 @@
 int gameView::launch(float width, float height)
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "SAPER", sf::Style::Titlebar | sf::Style::Close);
+	setIcon(window);
 	sf::Font font;
 	sf::RectangleShape background;
 	background.setSize(sf::Vector2f(width, height));
@@ -92,7 +93,7 @@ void gameView::draw_menu(sf::RenderWindow &window, sf::Font font)
 	}
 }
 
-void gameView::play(float width, float height)
+void gameView::play(float width, float height, gameModel& model)
 {
 	sf::RenderWindow play(sf::VideoMode(width, height), "Saper");
 	setIcon(play);
@@ -106,11 +107,6 @@ void gameView::play(float width, float height)
 	vector<vector<int>> board = model.getBoard();
 	int boardSize = model.getBoardSize();
 
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			grid[i][j] = 10;
-		}
-	}
 
 	while (play.isOpen()) {
 		sf::Vector2i pos = sf::Mouse::getPosition(play);
@@ -149,17 +145,14 @@ void gameView::play(float width, float height)
 			}
 		}
 
-		int textureSize = 64;
-		float scale = 0.5;
-
 		play.clear(sf::Color::White);
 
 		for (int i = 0; i < boardSize; i++) {
 			for (int j = 0; j < boardSize; j++) {
 				if (grid[xF][yF] == 9) {
 					grid[i][j] = board[j][i]; //!!!!!
-					cout << "Koniec gry";;
 					play.close();
+					cout << "Koniec gry";
 				}
 				spriteField.setTextureRect(sf::IntRect(grid[i][j]*fieldSize, 0, fieldSize, fieldSize));
 				spriteField.setScale((width/ (boardSize+2))/fieldSize, (width/ (boardSize + 2))/fieldSize);
@@ -169,6 +162,13 @@ void gameView::play(float width, float height)
 		}
 		play.display();
 	}
+}
+
+void gameView::setIcon(sf::RenderWindow& window)
+{
+	sf::Image icon;
+	icon.loadFromFile("../Images/icon.jpg");
+	window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 }
 
 
