@@ -20,13 +20,13 @@ void gameController::start_menu()
 		break;
 	}
 	model.generateBoard();
-	for (int i = 0; i < model.getBoardSize(); i++)
-	{
-		for (int j = 0; j < model.getBoardSize(); j++)
-		{
-			cout << model.getBoard()[i][j];
-		}
-		cout << endl;
-	}
-	view.play(600,600);
+	//for (int i = 0; i < model.getBoardSize(); i++)
+	//{
+	//	for (int j = 0; j < model.getBoardSize(); j++)
+	//	{
+	//		cout << model.getBoard()[i][j];
+	//	}
+	//	cout << endl;
+	//}
+	view.play(600,600,model);
 }

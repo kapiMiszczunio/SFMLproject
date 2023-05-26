@@ -209,7 +209,7 @@ void gameModel::generateBoard()
 	}
 }
 
-//ustawienie poziomu trufnoœci
+//ustawienie poziomu trudnoœci
 void gameModel::setGameDifficulty(string difficulty)
 {
 	if (difficulty == "easy") {
@@ -232,7 +232,7 @@ vector<vector<int>> gameModel::generateGrid() {
 		vector<int> secondDeck;
 		grid.push_back(secondDeck);
 		for (int j = 0; j < this->boardSize; j++) {
-			grid[i].push_back(0);
+			grid[i].push_back(10);
 		}
 	}
 	return grid;

@@ -95,13 +95,16 @@ void gameView::draw_menu(sf::RenderWindow &window, sf::Font font)
 void gameView::play(float width, float height)
 {
 	sf::RenderWindow play(sf::VideoMode(width, height), "Saper");
-	sf::Texture blankField;
-	blankField.loadFromFile("../Images/blank.gif");
-	sf::Sprite spriteField(blankField);
-	//gameModel model;
-	//vector<vector<int>> grid = model.generateGrid();
+	setIcon(play);
+	sf::Texture field;
+	field.loadFromFile("../Images/tiles.jpg");
+	sf::Sprite spriteField(field);
 
-	int grid[10][10];
+	int fieldSize = 32;
+
+	vector<vector<int>> grid = model.generateGrid();
+	vector<vector<int>> board = model.getBoard();
+	int boardSize = model.getBoardSize();
 
 	for (int i = 0; i < 10; i++) {
 		for (int j = 0; j < 10; j++) {
@@ -110,6 +113,13 @@ void gameView::play(float width, float height)
 	}
 
 	while (play.isOpen()) {
+		sf::Vector2i pos = sf::Mouse::getPosition(play);
+		int x = pos.x / (fieldSize* (width / (boardSize + 2)) / fieldSize);
+		int y = pos.y / (fieldSize * (width / (boardSize + 2)) / fieldSize);
+
+		int xF = x - 1;
+		int yF = y - 1;
+
 		sf::Event playEvent;
 		while (play.pollEvent(playEvent)) {
 			if (playEvent.type == sf::Event::Closed) {
@@ -120,13 +130,40 @@ void gameView::play(float width, float height)
 					play.close();
 				}
 			}
+			if (playEvent.type == sf::Event::MouseButtonPressed) {
+				if (playEvent.key.code == sf::Mouse::Left) {
+					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
+						if (grid[xF][yF] != 11) {
+							grid[xF][yF] = board[yF][xF];
+						}
+					}
+				}
+				else if (playEvent.key.code == sf::Mouse::Right) {
+					if (grid[xF][yF] == 11) {
+						grid[xF][yF] = 10;
+					}
+					else {
+						grid[xF][yF] = 11;
+					}
+				}
+			}
 		}
+
+		int textureSize = 64;
+		float scale = 0.5;
+
 		play.clear(sf::Color::White);
-		for (int i = 0; i < 15; i++) {
-			for (int j = 0; j < 15; j++) {
-				spriteField.setTextureRect(sf::IntRect(0, 0, 64,64));
-				spriteField.setScale(0.5, 0.5);
-				spriteField.setPosition(i * 64*0.5, j * 64*0.5);
+
+		for (int i = 0; i < boardSize; i++) {
+			for (int j = 0; j < boardSize; j++) {
+				if (grid[xF][yF] == 9) {
+					grid[i][j] = board[j][i]; //!!!!!
+					cout << "Koniec gry";;
+					play.close();
+				}
+				spriteField.setTextureRect(sf::IntRect(grid[i][j]*fieldSize, 0, fieldSize, fieldSize));
+				spriteField.setScale((width/ (boardSize+2))/fieldSize, (width/ (boardSize + 2))/fieldSize);
+				spriteField.setPosition((i+1)* width / (boardSize + 2), (j + 1) * width / (boardSize + 2));
 				play.draw(spriteField);
 			}
 		}

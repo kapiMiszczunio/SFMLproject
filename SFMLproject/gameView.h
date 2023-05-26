@@ -10,7 +10,6 @@ public:
 	void play(float width, float height);
 
 private:
-	int mainMenuSelected = 1;
 	sf::Font font;
 	sf::Text menu_item[4];
 };
