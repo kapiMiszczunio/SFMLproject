@@ -4,10 +4,9 @@ gameController::~gameController()
 {
 }
 
-gameController::gameController()
+gameController::gameController(/*gameModel& model, gameView& view) : model(model), view(view*/)
 {
 }
-
 
 void gameController::start_menu()
 {
@@ -37,5 +36,6 @@ void gameController::start_menu()
 		}
 		cout << endl;
 	}*/
-	view.play(600,600,model);
+	view.play(600, 600, model);
+	view.gameOver();
 }

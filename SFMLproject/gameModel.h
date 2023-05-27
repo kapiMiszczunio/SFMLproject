@@ -1,13 +1,14 @@
 #pragma once
 #include "field.h"
+#include "ctime"
 
 class gameModel
 {
 private:
+	unsigned seed;
 	int boardSize;
-	int fieldLeft;
-	int seed;
 	int numberOfBombs;
+	int fieldLeft;
 	int flaggedCells = 0;
 	vector<vector<int>> board;
 	vector<vector<int>> grid;
@@ -18,10 +19,10 @@ public:
 	~gameModel();
 	void generateBoard();
 	void generateGrid();
+	vector<vector<int>> getGrid();
 	string getGameDifficulty();
 	string getGameStatus();
 	vector<vector<int>> getBoard();
-	vector<vector<int>> getGrid();
 	void setGameStatus(string gameStatus);
 	void setGameDifficulty(string difficulty);
 	void addFlag();
@@ -29,4 +30,3 @@ public:
 	int getBoardSize();
 	int getFieldLeft();
 };
-

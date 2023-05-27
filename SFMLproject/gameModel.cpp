@@ -1,4 +1,4 @@
-#include "gameModel.h"
+Ôªø#include "gameModel.h"
 
 gameModel::~gameModel()
 {
@@ -6,7 +6,7 @@ gameModel::~gameModel()
 
 void gameModel::generateBoard()
 {
-	//generowanie planszy z zerowymi wartoúciami
+	//generowanie planszy z zerowymi warto≈ìciami
 	for (int i = 0; i < this->boardSize; i++) {
 		vector<int> secondTab;
 		this->board.push_back(secondTab);
@@ -27,7 +27,7 @@ void gameModel::generateBoard()
 		}
 	}
 
-	//liczenie bomb obok kaødego pola
+	//liczenie bomb obok ka¬ødego pola
 	for (int i = 0; i < this->boardSize; i++) {
 		for (int j = 0; j < this->boardSize; j++) {
 			if (this->board[i][j] == 9) {
@@ -46,7 +46,7 @@ void gameModel::generateBoard()
 						this->board[i + 1][j + 1] = temp + 1;
 					}
 				}
-				else if (i == 0 && j == this->boardSize-1) {
+				else if (i == 0 && j == this->boardSize - 1) {
 					if (this->board[i][j - 1] != 9) {
 						temp = this->board[i][j - 1];
 						this->board[i][j - 1] = temp + 1;
@@ -133,43 +133,43 @@ void gameModel::generateBoard()
 					}
 				}
 				else if (j == 0 && i < this->boardSize - 1 && i > 0) {
-					if (this->board[i+1][j] != 9) {
-						temp = this->board[i+1][j];
-						this->board[i+1][j] = temp + 1;
+					if (this->board[i + 1][j] != 9) {
+						temp = this->board[i + 1][j];
+						this->board[i + 1][j] = temp + 1;
 					}
-					if (this->board[i-1][j] != 9) {
-						temp = this->board[i-1][j];
-						this->board[i-1][j] = temp + 1;
+					if (this->board[i - 1][j] != 9) {
+						temp = this->board[i - 1][j];
+						this->board[i - 1][j] = temp + 1;
 					}
 					if (this->board[i + 1][j + 1] != 9) {
 						temp = this->board[i + 1][j + 1];
 						this->board[i + 1][j + 1] = temp + 1;
 					}
-					if (this->board[i - 1][j+1] != 9) {
-						temp = this->board[i - 1][j+1];
-						this->board[i - 1][j+1] = temp + 1;
+					if (this->board[i - 1][j + 1] != 9) {
+						temp = this->board[i - 1][j + 1];
+						this->board[i - 1][j + 1] = temp + 1;
 					}
-					if (this->board[i][j+1] != 9) {
-						temp = this->board[i][j+1];
-						this->board[i][j+1] = temp + 1;
+					if (this->board[i][j + 1] != 9) {
+						temp = this->board[i][j + 1];
+						this->board[i][j + 1] = temp + 1;
 					}
 				}
 				else if (j == this->boardSize - 1 && i < this->boardSize - 1 && i > 0) {
-					if (this->board[i+1][j] != 9) {
-						temp = this->board[i+1][j];
-						this->board[i+1][j] = temp + 1;
+					if (this->board[i + 1][j] != 9) {
+						temp = this->board[i + 1][j];
+						this->board[i + 1][j] = temp + 1;
 					}
-					if (this->board[i-1][j] != 9) {
-						temp = this->board[i-1][j];
-						this->board[i-1][j] = temp + 1;
+					if (this->board[i - 1][j] != 9) {
+						temp = this->board[i - 1][j];
+						this->board[i - 1][j] = temp + 1;
 					}
 					if (this->board[i + 1][j - 1] != 9) {
 						temp = this->board[i + 1][j - 1];
 						this->board[i + 1][j - 1] = temp + 1;
 					}
-					if (this->board[i][j-1] != 9) {
-						temp = this->board[i][j-1];
-						this->board[i][j-1] = temp + 1;
+					if (this->board[i][j - 1] != 9) {
+						temp = this->board[i][j - 1];
+						this->board[i][j - 1] = temp + 1;
 					}
 					if (this->board[i - 1][j - 1] != 9) {
 						temp = this->board[i - 1][j - 1];
@@ -177,9 +177,9 @@ void gameModel::generateBoard()
 					}
 				}
 				else {
-					if (this->board[i - 1][j-1] != 9) {
-						temp = this->board[i - 1][j-1];
-						this->board[i - 1][j-1] = temp + 1;
+					if (this->board[i - 1][j - 1] != 9) {
+						temp = this->board[i - 1][j - 1];
+						this->board[i - 1][j - 1] = temp + 1;
 					}
 					if (this->board[i - 1][j] != 9) {
 						temp = this->board[i - 1][j];
@@ -197,17 +197,17 @@ void gameModel::generateBoard()
 						temp = this->board[i][j + 1];
 						this->board[i][j + 1] = temp + 1;
 					}
-					if (this->board[i + 1][j-1] != 9) {
-						temp = this->board[i + 1][j-1];
-						this->board[i + 1][j-1] = temp + 1;
+					if (this->board[i + 1][j - 1] != 9) {
+						temp = this->board[i + 1][j - 1];
+						this->board[i + 1][j - 1] = temp + 1;
 					}
 					if (this->board[i + 1][j] != 9) {
 						temp = this->board[i + 1][j];
 						this->board[i + 1][j] = temp + 1;
 					}
-					if (this->board[i + 1][j+1] != 9) {
-						temp = this->board[i + 1][j+1];
-						this->board[i + 1][j+1] = temp + 1;
+					if (this->board[i + 1][j + 1] != 9) {
+						temp = this->board[i + 1][j + 1];
+						this->board[i + 1][j + 1] = temp + 1;
 					}
 				}
 			}
@@ -215,7 +215,7 @@ void gameModel::generateBoard()
 	}
 }
 
-//ustawienie poziomu trufnoúci
+//ustawienie poziomu trufno≈ìci
 void gameModel::setGameDifficulty(string difficulty)
 {
 	if (difficulty == "easy") {
@@ -246,7 +246,7 @@ void gameModel::generateGrid() {
 }
 
 vector<vector<int>> gameModel::getGrid()
-{ 
+{
 	return this->grid;
 }
 
