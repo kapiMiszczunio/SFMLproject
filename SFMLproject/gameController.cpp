@@ -1,16 +1,24 @@
 #include "gameController.h"
 
-gameController::gameController(gameModel& model, gameView& view) : model(model), view(view) 
+gameController::~gameController()
 {
 }
 
+gameController::gameController()
+{
+}
+
+
 void gameController::start_menu()
 {
+	gameModel model;
+	gameView view;
 	difficulty = view.launch(600, 600);
 	switch (difficulty)
 	{
 	case 1:
 		model.setGameDifficulty("easy");
+		view.fieldLeft = model.getFieldLeft();
 		break;
 	case 2:
 		model.setGameDifficulty("medium");
@@ -20,13 +28,15 @@ void gameController::start_menu()
 		break;
 	}
 	model.generateBoard();
-	//for (int i = 0; i < model.getBoardSize(); i++)
-	//{
-	//	for (int j = 0; j < model.getBoardSize(); j++)
-	//	{
-	//		cout << model.getBoard()[i][j];
-	//	}
-	//	cout << endl;
-	//}
+	model.generateGrid();
+	/*for (int i = 0; i < model.getBoardSize(); i++)
+	{
+		for (int j = 0; j < model.getBoardSize(); j++)
+		{
+			cout << model.getBoard()[i][j];
+		}
+		cout << endl;
+	}*/
 	view.play(600,600,model);
+	view.gameOver();
 }
