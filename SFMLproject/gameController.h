@@ -11,7 +11,8 @@
 class gameController
 {
 public:
-	explicit gameController(gameModel& model, gameView& view);
+	~gameController();
+	explicit gameController();
 	void start_menu();
 
 private:

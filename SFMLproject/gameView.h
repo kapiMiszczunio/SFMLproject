@@ -11,6 +11,7 @@ public:
 	void draw_menu(sf::RenderWindow &window, sf::Font font);
 	void play(float width, float height, gameModel& model);
 	void setIcon(sf::RenderWindow& window);
+	int fieldLeft;
 
 private:
 	sf::Font font;

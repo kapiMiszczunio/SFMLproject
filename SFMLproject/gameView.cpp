@@ -103,7 +103,7 @@ void gameView::play(float width, float height, gameModel& model)
 
 	int fieldSize = 32;
 
-	vector<vector<int>> grid = model.generateGrid();
+	vector<vector<int>> grid = model.getGrid();
 	vector<vector<int>> board = model.getBoard();
 	int boardSize = model.getBoardSize();
 
