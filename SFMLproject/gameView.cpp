@@ -1,4 +1,10 @@
 #include "gameView.h"
+#include "gameModel.h"
+#include "gameController.h"
+
+gameView::~gameView()
+{
+}
 
 int gameView::launch(float width, float height)
 {
@@ -11,7 +17,7 @@ int gameView::launch(float width, float height)
 	mainTexture.loadFromFile("../Images/menuBackground.png");
 	background.setTexture(&mainTexture);
 	if (!font.loadFromFile("../Fonts/arial.ttf"))
-	{
+	{  
 		cout << "We have some trouble with finding font file!" << endl;
 	}
 
@@ -94,41 +100,92 @@ void gameView::draw_menu(sf::RenderWindow &window, sf::Font font)
 
 void gameView::play(float width, float height,gameModel &model)
 {
-	sf::RenderWindow play(sf::VideoMode(width, height), "Saper");
+	sf::RenderWindow play(sf::VideoMode(width, height), "Saper", sf::Style::Titlebar | sf::Style::Close);
 	setIcon(play);
 	sf::Texture blankField;
 	blankField.loadFromFile("../Images/blank.gif");
 	sf::Sprite spriteField(blankField);
 
+	int fieldSize = 32;
+	vector<vector<int>> grid = model.getGrid();
+	vector<vector<int>> board = model.getBoard();
 	int boardSize = model.getBoardSize();
 
 	while (play.isOpen()) {
-		sf::Event playEvent;
-		while (play.pollEvent(playEvent)) {
-			if (playEvent.type == sf::Event::Closed) {
-				play.close();
-			}
-			if (playEvent.type == sf::Event::KeyPressed) {
-				if (playEvent.key.code == sf::Keyboard::Escape) {
+			sf::Vector2i pos = sf::Mouse::getPosition(play);
+			int x = pos.x / (fieldSize * (width / (boardSize + 2)) / fieldSize);
+			int y = pos.y / (fieldSize * (width / (boardSize + 2)) / fieldSize);
+			int xF = x - 1;
+			int yF = y - 1;
+
+
+			sf::Event playEvent;
+			while (play.pollEvent(playEvent)) {
+				if (playEvent.type == sf::Event::Closed) {
 					play.close();
 				}
+				if (playEvent.type == sf::Event::KeyPressed) {
+					if (playEvent.key.code == sf::Keyboard::Escape) {
+						play.close();
+					}
+				}
+				if (playEvent.type == sf::Event::MouseButtonPressed) {
+
+					if (playEvent.key.code == sf::Mouse::Left) {
+						if (grid[xF][yF]==10)
+						{
+							fieldLeft -= 1;
+							cout << fieldLeft;
+						}
+						if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
+							if (grid[xF][yF] != 11) {
+								grid[xF][yF] = board[yF][xF];
+							}
+						}
+					}
+					else if (playEvent.key.code == sf::Mouse::Right) {
+						if (grid[xF][yF] == 11) {
+							grid[xF][yF] = 10;
+							fieldLeft += 1;
+							cout << fieldLeft;
+						}
+						else {
+							if (grid[xF][yF] == 10)
+							{
+								grid[xF][yF] = 11;
+								fieldLeft -= 1;
+								cout << fieldLeft;
+							}
+						}
+					}
+				
+				
+				
+				}
 			}
-		}
-
-		int textureSize = 64;
-		float scale = 0.5;
-
-		play.clear(sf::Color::White);
-
-		for (int i = 0; i < boardSize; i++) {
-			for (int j = 0; j < boardSize; j++) {
-				spriteField.setTextureRect(sf::IntRect(0, 0, textureSize, textureSize));
-				spriteField.setScale((width/ (boardSize+2))/60, (width/ (boardSize + 2))/60);
-				spriteField.setPosition((i+1)* width / (boardSize + 2), (j + 1) * width / (boardSize + 2));
-				play.draw(spriteField);
+			if (fieldLeft == 0)
+			{
+				cout << "ZWYCIESTWO";
+				play.close();
 			}
-		}
-		play.display();
+			play.clear(sf::Color::White);
+
+			for (int i = 0; i < boardSize; i++) {
+				for (int j = 0; j < boardSize; j++) {
+					if (xF >= 0 and xF<boardSize and yF >= 0 and yF<boardSize)
+					{
+						if (grid[xF][yF] == 9) {
+							grid[i][j] = board[j][i]; //!!!!!
+							play.close();
+						}
+					}
+					spriteField.setTextureRect(sf::IntRect(grid[i][j] * fieldSize, 0, fieldSize, fieldSize));
+					spriteField.setScale((width / (boardSize + 2)) / fieldSize, (width / (boardSize + 2)) / fieldSize);
+					spriteField.setPosition((i + 1) * width / (boardSize + 2), (j + 1) * width / (boardSize + 2));
+					play.draw(spriteField);
+				}
+			}
+			play.display();
 	}
 }
 
@@ -137,6 +194,11 @@ void gameView::setIcon(sf::RenderWindow &window)
 	sf::Image icon;
 	icon.loadFromFile("../Images/icon.png");
 	window.setIcon(icon.getSize().x,icon.getSize().y,icon.getPixelsPtr());
+}
+
+void gameView::gameOver()
+{
+	cout << "game Over!";
 }
 
 

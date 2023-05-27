@@ -1,5 +1,9 @@
 #include "gameModel.h"
 
+gameModel::~gameModel()
+{
+}
+
 void gameModel::generateBoard()
 {
 	//generowanie planszy z zerowymi wartoœciami
@@ -12,6 +16,8 @@ void gameModel::generateBoard()
 	}
 
 	//losowanie lokalizacji bomb i umiejscowienie ich na planszy | bomba = 9
+	seed = time(0);
+	srand(seed);
 	for (int i = 0; i < this->numberOfBombs; i++) {
 		int x = rand() % this->boardSize;
 		int y = rand() % this->boardSize;
@@ -215,28 +221,35 @@ void gameModel::setGameDifficulty(string difficulty)
 	if (difficulty == "easy") {
 		this->boardSize = 10;
 		this->numberOfBombs = 14;
+		this->fieldLeft = 100;
 	}
 	else if (difficulty == "medium") {
 		this->boardSize = 15;
 		this->numberOfBombs = 40;
+		this->fieldLeft = 225;
 	}
 	else if (difficulty == "hard") {
 		this->boardSize = 20;
 		this->numberOfBombs = 100;
+		this->fieldLeft = 400;
 	}
 }
 
-//vector<vector<int>> gameModel::generateGrid() {
-//	vector<vector<int>> grid;
-//	for (int i = 0; i < this->boardSize; i++) {
-//		vector<int> secondDeck;
-//		grid.push_back(secondDeck);
-//		for (int j = 0; j < this->boardSize; j++) {
-//			grid[i].push_back(0);
-//		}
-//	}
-//	return grid;
-//}
+void gameModel::generateGrid() {
+	for (int i = 0; i < this->boardSize; i++) {
+		vector<int> secondDeck;
+		grid.push_back(secondDeck);
+		for (int j = 0; j < this->boardSize; j++) {
+			grid[i].push_back(10);
+		}
+	}
+}
+
+vector<vector<int>> gameModel::getGrid()
+{
+	return this->grid;
+}
+
 
 void gameModel::addFlag()
 {
@@ -251,6 +264,11 @@ void gameModel::subFlag()
 int gameModel::getBoardSize()
 {
 	return this->boardSize;
+}
+
+int gameModel::getFieldLeft()
+{
+	return this->fieldLeft;
 }
 
 string gameModel::getGameDifficulty()
