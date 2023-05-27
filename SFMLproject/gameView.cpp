@@ -232,7 +232,7 @@ int gameView::play(float width, float height, gameModel& model)
 			}
 		}
 
-		}
+		
 		if (fieldLeft == 0)
 		{
 			play.close();
