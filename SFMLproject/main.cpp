@@ -3,8 +3,6 @@
 int main()
 {
 	gameController controller;
-	while (true)
-	{
-		controller.start_menu();
-	} 
+	controller.start_menu();
+
 }

@@ -4,7 +4,7 @@ gameController::~gameController()
 {
 }
 
-gameController::gameController(/*gameModel& model, gameView& view) : model(model), view(view*/)
+gameController::gameController()
 {
 }
 
@@ -21,9 +21,11 @@ void gameController::start_menu()
 		break;
 	case 2:
 		model.setGameDifficulty("medium");
+		view.fieldLeft = model.getFieldLeft();
 		break;
 	case 3:
 		model.setGameDifficulty("hard");
+		view.fieldLeft = model.getFieldLeft();
 		break;
 	}
 	model.generateBoard();
@@ -36,6 +38,22 @@ void gameController::start_menu()
 		}
 		cout << endl;
 	}*/
-	view.play(600, 600, model);
-	view.gameOver();
+	model.setGameStatus(view.play(600, 600, model));
+	switch (model.getGameStatus())
+	{
+		case 1:
+			switch (view.Victory())
+			{
+			case 1:
+				start_menu();
+			}
+			break;
+		case 2:
+			switch (view.gameOver())
+			{
+			case 1:
+				start_menu();
+				break;
+			}
+	}
 }

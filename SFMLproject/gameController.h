@@ -19,5 +19,6 @@ private:
 	gameModel model;
 	gameView view;
 	int difficulty;
+	int decision;
 };
 

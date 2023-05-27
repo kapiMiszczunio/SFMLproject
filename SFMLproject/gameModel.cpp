@@ -276,7 +276,7 @@ string gameModel::getGameDifficulty()
 	return this->gameDifficulty;
 }
 
-string gameModel::getGameStatus()
+int gameModel::getGameStatus()
 {
 	return this->gameStatus;
 }
@@ -286,7 +286,7 @@ vector<vector<int>> gameModel::getBoard()
 	return this->board;
 }
 
-void gameModel::setGameStatus(string gameStatus)
+void gameModel::setGameStatus(int gameStatus)
 {
 	this->gameStatus = gameStatus;
 }

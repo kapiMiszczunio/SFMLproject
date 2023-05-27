@@ -12,7 +12,7 @@ private:
 	int flaggedCells = 0;
 	vector<vector<int>> board;
 	vector<vector<int>> grid;
-	string gameStatus;
+	int gameStatus;
 	string gameDifficulty;
 
 public:
@@ -21,9 +21,9 @@ public:
 	void generateGrid();
 	vector<vector<int>> getGrid();
 	string getGameDifficulty();
-	string getGameStatus();
+	int getGameStatus();
 	vector<vector<int>> getBoard();
-	void setGameStatus(string gameStatus);
+	void setGameStatus(int gameStatus);
 	void setGameDifficulty(string difficulty);
 	void addFlag();
 	void subFlag();
