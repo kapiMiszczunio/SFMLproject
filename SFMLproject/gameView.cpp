@@ -184,6 +184,8 @@ int gameView::play(float width, float height, gameModel& model)
 	vector<vector<int>> board = model.getBoard();
 	int boardSize = model.getBoardSize();
 
+	//ropoczêcie odliczania czasu
+
 	while (play.isOpen()) {
 		sf::Vector2i pos = sf::Mouse::getPosition(play);
 		int x = pos.x / (fieldSize * (width / (boardSize + 2)) / fieldSize);
@@ -206,9 +208,11 @@ int gameView::play(float width, float height, gameModel& model)
 			if (playEvent.type == sf::Event::MouseButtonPressed) {
 
 				if (playEvent.key.code == sf::Mouse::Left) {
-					if (grid[xF][yF] == 10)
-					{
-						fieldLeft -= 1;
+					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
+						if (grid[xF][yF] == 10)
+						{
+							fieldLeft -= 1;
+						}
 					}
 					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
 						if (grid[xF][yF] != 11) {
@@ -236,6 +240,7 @@ int gameView::play(float width, float height, gameModel& model)
 		if (fieldLeft == 0)
 		{
 			play.close();
+			//zakoñczenie odliczania czasu
 			return 1;
 		}
 		play.clear(sf::Color::White);
@@ -247,6 +252,7 @@ int gameView::play(float width, float height, gameModel& model)
 					if (grid[xF][yF] == 9) {
 						grid[i][j] = board[j][i]; //!!!!!
 						play.close();
+						//zakoñczenie odliczania czasu
 						return 2;
 					}
 				}
