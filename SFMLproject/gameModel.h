@@ -2,7 +2,7 @@
 #include "field.h"
 #include "ctime"
 
-class gameModel
+class gameModel 
 {
 private:
 	unsigned seed;
@@ -12,8 +12,8 @@ private:
 	int flaggedCells = 0;
 	vector<vector<int>> board;
 	vector<vector<int>> grid;
-	int gameStatus;
 	string gameDifficulty;
+	int gameStatus;
 
 public:
 	~gameModel();

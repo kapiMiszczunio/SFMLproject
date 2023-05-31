@@ -8,7 +8,7 @@
 #include "gameView.h"
 #include "gameModel.h"
 
-class gameController
+class gameController : public gameModel
 {
 public:
 	~gameController();

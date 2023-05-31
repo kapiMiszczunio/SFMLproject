@@ -10,7 +10,6 @@ gameController::gameController()
 
 void gameController::start_menu()
 {
-	gameModel model;
 	gameView view;
 	difficulty = view.launch(600, 600);
 	switch (difficulty)
