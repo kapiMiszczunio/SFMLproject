@@ -45,18 +45,7 @@ void gameController::start_menu()
 	switch (model.getGameStatus())
 	{
 		case 1:
-			switch (view.Victory())
-			{
-			case 1:
-				start_menu();
-			}
+			start_menu();
 			break;
-		case 2:
-			switch (view.gameOver())
-			{
-			case 1:
-				start_menu();
-				break;
-			}
 	}
 }

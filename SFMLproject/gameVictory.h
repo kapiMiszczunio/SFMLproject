@@ -3,11 +3,11 @@
 #include <iostream>
 using namespace std;
 
-class gameOver
+class gameVictory
 {
 public:
-	void draw_game_over(sf::RenderWindow& window, sf::Font font);
+	sf::Text victory_item[4];
 	sf::Font font;
-	sf::Text game_over_item[4];
+	void draw_victory(sf::RenderWindow& window, sf::Font font);
 };
 

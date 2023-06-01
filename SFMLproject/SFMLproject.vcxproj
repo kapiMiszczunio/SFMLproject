@@ -139,7 +139,7 @@
     <ClCompile Include="gameOver.cpp" />
     <ClCompile Include="gameView.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="victory.cpp" />
+    <ClCompile Include="gameVictory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="endGameScreen.h" />
@@ -147,7 +147,7 @@
     <ClInclude Include="gameModel.h" />
     <ClInclude Include="gameOver.h" />
     <ClInclude Include="gameView.h" />
-    <ClInclude Include="victory.h" />
+    <ClInclude Include="gameVictory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
