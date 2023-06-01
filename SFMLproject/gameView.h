@@ -1,5 +1,4 @@
 #pragma once
-#include "field.h"
 #include "gameModel.h"
 #include "SFML/Graphics.hpp"
 

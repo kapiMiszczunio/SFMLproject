@@ -1,6 +1,8 @@
 #pragma once
-#include "field.h"
 #include "ctime"
+#include "vector"
+#include <iostream>
+using namespace std;
 
 class gameModel 
 {
