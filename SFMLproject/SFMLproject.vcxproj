@@ -133,17 +133,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="endGameScreen.cpp" />
     <ClCompile Include="field.cpp" />
     <ClCompile Include="gameController.cpp" />
     <ClCompile Include="gameModel.cpp" />
+    <ClCompile Include="gameOver.cpp" />
     <ClCompile Include="gameView.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="victory.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="endGameScreen.h" />
     <ClInclude Include="field.h" />
     <ClInclude Include="gameController.h" />
     <ClInclude Include="gameModel.h" />
+    <ClInclude Include="gameOver.h" />
     <ClInclude Include="gameView.h" />
+    <ClInclude Include="victory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

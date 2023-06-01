@@ -221,15 +221,17 @@ int gameView::play(float width, float height, gameModel& model)
 					}
 				}
 				else if (playEvent.key.code == sf::Mouse::Right) {
-					if (grid[xF][yF] == 11) {
-						grid[xF][yF] = 10;
-						fieldLeft += 1;
-					}
-					else {
-						if (grid[xF][yF] == 10)
-						{
-							grid[xF][yF] = 11;
-							fieldLeft -= 1;
+					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
+						if (grid[xF][yF] == 11) {
+							grid[xF][yF] = 10;
+							fieldLeft += 1;
+						}
+						else {
+							if (grid[xF][yF] == 10)
+							{
+								grid[xF][yF] = 11;
+								fieldLeft -= 1;
+							}
 						}
 					}
 				}
