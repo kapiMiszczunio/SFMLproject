@@ -29,5 +29,4 @@ public:
 	void subFlag();
 	int getBoardSize();
 	int getFieldLeft();
-
 };
