@@ -168,8 +168,8 @@ int gameView::play(float width, float height, gameModel& model)
 		if (fieldLeft == 0)
 		{
 			play.close();
-			endGameScreen screen;
-			return screen.victory();
+			gameVictory screen;
+			return screen.draw_victory();
 		}
 		play.clear(sf::Color::White);
 
@@ -181,8 +181,9 @@ int gameView::play(float width, float height, gameModel& model)
 						grid[i][j] = board[j][i]; //!!!!!
 						play.close();
 						//zakoñczenie odliczania czasu
-						endGameScreen screen;
-						return screen.gameover();
+						
+						gameOver screen;
+						return screen.draw_game_over();
 					}
 				}
 				spriteField.setTextureRect(sf::IntRect(grid[i][j] * fieldSize, 0, fieldSize, fieldSize));

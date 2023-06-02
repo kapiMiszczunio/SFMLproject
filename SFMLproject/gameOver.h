@@ -1,13 +1,15 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include <iostream>
+#include "endGameScreen.h"
 using namespace std;
 
-class gameOver
+class gameOver : public endGameScreen
 {
 public:
-	void draw_game_over(sf::RenderWindow& window, sf::Font font);
+	int draw_game_over();
 	sf::Font font;
 	sf::Text game_over_item[4];
+	int decision;
 };
 

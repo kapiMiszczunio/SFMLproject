@@ -4,9 +4,6 @@ gameController::~gameController()
 {
 }
 
-gameController::gameController()
-{
-}
 
 void gameController::start_menu()
 {
@@ -31,7 +28,8 @@ void gameController::start_menu()
 	model.generateBoard();
 	model.generateGrid();
 
-
+	/*
+	* Funkcja wyœwietla lokacje pól w konsoli
 	for (int i = 0; i < model.getBoardSize(); i++)
 	{
 		for (int j = 0; j < model.getBoardSize(); j++)
@@ -40,6 +38,7 @@ void gameController::start_menu()
 		}
 		cout << endl;
 	}
+	*/
 
 	model.setGameStatus(view.play(600, 600, model));
 	switch (model.getGameStatus())

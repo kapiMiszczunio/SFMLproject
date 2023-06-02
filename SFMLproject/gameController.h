@@ -9,11 +9,10 @@
 #include "gameModel.h"
 using namespace std;
 
-class gameController
+class gameController 
 {
 public:
 	~gameController();
-	explicit gameController();
 	void start_menu();
 
 private:

@@ -1,6 +1,7 @@
 #pragma once
 #include "gameModel.h"
-#include "endGameScreen.h"
+#include "gameOver.h"
+#include "gameVictory.h"
 #include "SFML/Graphics.hpp"
 
 class gameView
