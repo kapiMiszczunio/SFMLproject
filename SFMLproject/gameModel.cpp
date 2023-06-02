@@ -6,7 +6,7 @@ gameModel::~gameModel()
 
 void gameModel::generateBoard()
 {
-	//generowanie planszy z zerowymi wartoœciami
+	//generates raw grid of the board with default values
 	for (int i = 0; i < this->boardSize; i++) {
 		vector<int> secondTab;
 		this->board.push_back(secondTab);
@@ -15,19 +15,18 @@ void gameModel::generateBoard()
 		}
 	}
 
-	//losowanie lokalizacji bomb i umiejscowienie ich na planszy | bomba = 9
+	//gets randomly bomb positions
 	seed = time(0);
 	srand(seed);
 	for (int i = 0; i < this->numberOfBombs; i++) {
 		int x = rand() % this->boardSize;
 		int y = rand() % this->boardSize;
-		//cout << x << y << endl;
 		if (this->board[x][y] == 0) {
 			this->board[x][y] = 9;
 		}
 	}
 
-	//liczenie bomb obok ka¿dego pola
+	//calculating number of bombs nearby every field
 	for (int i = 0; i < this->boardSize; i++) {
 		for (int j = 0; j < this->boardSize; j++) {
 			if (this->board[i][j] == 9) {
@@ -215,7 +214,6 @@ void gameModel::generateBoard()
 	}
 }
 
-//ustawienie poziomu trufnoœci
 void gameModel::setGameDifficulty(string difficulty)
 {
 	if (difficulty == "easy") {
@@ -248,17 +246,6 @@ void gameModel::generateGrid() {
 vector<vector<int>> gameModel::getGrid()
 {
 	return this->grid;
-}
-
-
-void gameModel::addFlag()
-{
-	this->flaggedCells++;
-}
-
-void gameModel::subFlag()
-{
-	this->flaggedCells--;
 }
 
 int gameModel::getBoardSize()

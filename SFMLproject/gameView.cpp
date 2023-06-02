@@ -137,12 +137,8 @@ int gameView::play(float width, float height, gameModel& model)
 					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
 						if (grid[xF][yF] == 10)
 						{
-							fieldLeft -= 1;
-						}
-					}
-					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
-						if (grid[xF][yF] != 11) {
 							grid[xF][yF] = board[yF][xF];
+							fieldLeft -= 1;
 						}
 					}
 				}
@@ -180,7 +176,6 @@ int gameView::play(float width, float height, gameModel& model)
 					if (grid[xF][yF] == 9) {
 						grid[i][j] = board[j][i]; //!!!!!
 						play.close();
-						//zakoñczenie odliczania czasu
 						
 						gameOver screen;
 						return screen.draw_game_over();
