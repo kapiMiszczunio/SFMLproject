@@ -14,15 +14,15 @@ void gameController::start_menu()
 	switch (difficulty)
 	{
 	case 1:
-		model.setGameDifficulty("easy");
+		model.setGameDifficulty(difficulty);
 		view.fieldLeft = model.getFieldLeft();
 		break;
 	case 2:
-		model.setGameDifficulty("medium");
+		model.setGameDifficulty(difficulty);
 		view.fieldLeft = model.getFieldLeft();
 		break;
 	case 3:
-		model.setGameDifficulty("hard");
+		model.setGameDifficulty(difficulty);
 		view.fieldLeft = model.getFieldLeft();
 		break;
 	}

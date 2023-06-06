@@ -43,10 +43,16 @@ private:
 	*/
 	vector<vector<int>> grid;
 
+	enum difficulty {
+		easy = 1,
+		medium,
+		hard
+	};
+
 	/*
-	* variable holds string of game difficulty
+	* variable holds enum number of game difficulty
 	*/
-	string gameDifficulty;
+	int gameDifficulty;
 
 	/*
 	* variable holds status of the game
@@ -76,9 +82,9 @@ public:
 	vector<vector<int>> getGrid();
 
 	/*
-	* @return returns string game difficulty
+	* @return returns enum int game difficulty
 	*/
-	string getGameDifficulty();
+	int getGameDifficulty();
 
 	/*
 	* @return returns status of the game in int
@@ -98,9 +104,9 @@ public:
 
 	/*
 	* function sets value of the game diffculty
-	* @param difficulty level of game in int (1, 2 or 3)
+	* @param difficulty level of game in enum difficulty (easy, medium or hard)
 	*/
-	void setGameDifficulty(string difficulty);
+	void setGameDifficulty(int difficulty);
 
 	/*
 	* @return returns int of board size

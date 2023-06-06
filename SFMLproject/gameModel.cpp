@@ -214,19 +214,19 @@ void gameModel::generateBoard()
 	}
 }
 
-void gameModel::setGameDifficulty(string difficulty)
+void gameModel::setGameDifficulty(int difficulty)
 {
-	if (difficulty == "easy") {
+	if (difficulty == easy) {
 		this->boardSize = 10;
 		this->numberOfBombs = 14;
 		this->fieldLeft = 100;
 	}
-	else if (difficulty == "medium") {
+	else if (difficulty == medium) {
 		this->boardSize = 15;
 		this->numberOfBombs = 40;
 		this->fieldLeft = 225;
 	}
-	else if (difficulty == "hard") {
+	else if (difficulty == hard) {
 		this->boardSize = 20;
 		this->numberOfBombs = 100;
 		this->fieldLeft = 400;
@@ -258,7 +258,7 @@ int gameModel::getFieldLeft()
 	return this->fieldLeft;
 }
 
-string gameModel::getGameDifficulty()
+int gameModel::getGameDifficulty()
 {
 	return this->gameDifficulty;
 }
