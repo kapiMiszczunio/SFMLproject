@@ -13,7 +13,7 @@ public:
 	* @param items to display from sfml
 	*/
 	int renderwindow(sf::RenderWindow& window, sf::Text *items);
-	virtual int draw();
+	virtual int draw(sf::Time time);
 	sf::Text window_item[4];
 	sf::Font font;
 	int decision;

@@ -47,6 +47,8 @@ public:
 	* variable holds number of unrevealed fields
 	*/
 	int fieldLeft;
+	sf::Time curr_time;
+	//sf::Clock timer;
 
 private:
 
@@ -54,6 +56,7 @@ private:
 	* object holds object of font from sfml
 	*/
 	sf::Font font;
+	int start_timer;
 
 	/*
 	* object holds menu items (title "Saper" and buttons with difficulty level) from sfml

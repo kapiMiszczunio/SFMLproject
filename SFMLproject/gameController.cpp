@@ -38,6 +38,7 @@ void gameController::start_menu()
 			break;
 		case 2:
 			endGameScreen * screen = new endGameScreen;
-			screen->draw();
+			screen->draw(view.curr_time);
+
 	}
 }

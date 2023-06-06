@@ -110,6 +110,8 @@ int gameView::play(float width, float height, gameModel& model)
 	int boardSize = model.getBoardSize();
 
 	//ropoczêcie odliczania czasu
+	sf::Clock timer;
+	start_timer = 1;
 
 	while (play.isOpen()) {
 		sf::Vector2i pos = sf::Mouse::getPosition(play);
@@ -119,7 +121,8 @@ int gameView::play(float width, float height, gameModel& model)
 		int yF = y - 1;
 
 		sf::Event playEvent;
-		while (play.pollEvent(playEvent)) {
+		while (play.pollEvent(playEvent)) 
+		{
 			if (playEvent.type == sf::Event::Closed) {
 				play.close();
 			}
@@ -129,13 +132,18 @@ int gameView::play(float width, float height, gameModel& model)
 				}
 			}
 			if (playEvent.type == sf::Event::MouseButtonPressed) {
-
 				if (playEvent.key.code == sf::Mouse::Left) {
+					if (start_timer == 1)
+					{
+						timer.restart();
+						start_timer = 0;
+					}
 					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
 						if (grid[xF][yF] == 10)
 						{
 							grid[xF][yF] = board[yF][xF];
 							fieldLeft -= 1;
+							
 						}
 					}
 				}
@@ -161,7 +169,10 @@ int gameView::play(float width, float height, gameModel& model)
 		{
 			play.close();
 			endGameScreen *screen = new gameVictory;
-			return screen -> draw();
+			curr_time = timer.getElapsedTime();
+			return screen -> draw(curr_time);
+
+
 
 		}
 		play.clear(sf::Color::White);
@@ -173,9 +184,11 @@ int gameView::play(float width, float height, gameModel& model)
 					if (grid[xF][yF] == 9) {
 						grid[i][j] = board[j][i]; //!!!!!
 						play.close();
+
 						
 						endGameScreen* screen = new gameOver;
-						return screen->draw();
+						curr_time = timer.getElapsedTime();
+						return screen->draw(curr_time);
 					}
 				}
 				spriteField.setTextureRect(sf::IntRect(grid[i][j] * fieldSize, 0, fieldSize, fieldSize));

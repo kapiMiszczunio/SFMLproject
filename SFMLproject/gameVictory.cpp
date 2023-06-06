@@ -1,8 +1,9 @@
 #include "gameVictory.h"
 
 
-int gameVictory::draw()
+int gameVictory::draw(sf::Time time)
 {
+	cout << time.asSeconds();
 	sf::RenderWindow window(sf::VideoMode(400, 400), "VICTORY!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))

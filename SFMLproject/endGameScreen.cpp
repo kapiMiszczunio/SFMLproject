@@ -50,7 +50,7 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items)
 	}
 }
 
-int endGameScreen::draw()
+int endGameScreen::draw(sf::Time time)
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Tanks for playing!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;

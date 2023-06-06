@@ -1,7 +1,9 @@
 #include "gameOver.h"
 
-int gameOver::draw()
+int gameOver::draw(sf::Time time)
 {
+	cout << time.asSeconds() << endl;
+
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Game Over!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
