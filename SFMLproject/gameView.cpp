@@ -119,7 +119,6 @@ int gameView::play(float width, float height, gameModel& model)
 		int y = pos.y / (fieldSize * (width / (boardSize + 2)) / fieldSize);
 		int xF = x - 1;
 		int yF = y - 1;
-
 		sf::Event playEvent;
 		while (play.pollEvent(playEvent)) 
 		{
@@ -171,9 +170,6 @@ int gameView::play(float width, float height, gameModel& model)
 			endGameScreen *screen = new gameVictory;
 			curr_time = timer.getElapsedTime();
 			return screen -> draw(curr_time);
-
-
-
 		}
 		play.clear(sf::Color::White);
 

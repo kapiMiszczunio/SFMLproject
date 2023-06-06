@@ -1,8 +1,9 @@
 #include "gameOver.h"
+#include <string>
 
 int gameOver::draw(sf::Time time)
 {
-	cout << time.asSeconds() << endl;
+	
 
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Game Over!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
@@ -24,7 +25,10 @@ int gameOver::draw(sf::Time time)
 
 	game_over_item[1].setFont(font2);
 	game_over_item[1].setFillColor(sf::Color::White);
-	game_over_item[1].setString("Time: 00:00:00");
+	string a = "Time: ";
+	string b = to_string(time.asSeconds());
+	string timee = a + b;
+	game_over_item[1].setString(timee);
 	game_over_item[1].setCharacterSize(40);
 	game_over_item[1].setPosition(sf::Vector2f(window.getSize().x * 0.2225, window.getSize().y * 0.2));
 

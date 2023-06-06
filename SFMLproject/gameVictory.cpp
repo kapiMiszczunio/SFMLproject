@@ -3,7 +3,6 @@
 
 int gameVictory::draw(sf::Time time)
 {
-	cout << time.asSeconds();
 	sf::RenderWindow window(sf::VideoMode(400, 400), "VICTORY!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
@@ -24,7 +23,10 @@ int gameVictory::draw(sf::Time time)
 
 	victory_item[1].setFont(font2);
 	victory_item[1].setFillColor(sf::Color::White);
-	victory_item[1].setString("Time: 00:00:00");
+	string a = "Time: ";
+	string b = to_string(time.asSeconds());
+	string timee = a + b;
+	victory_item[1].setString(timee);
 	victory_item[1].setCharacterSize(40);
 	victory_item[1].setPosition(sf::Vector2f(window.getSize().x * 0.175, window.getSize().y * 0.25));
 

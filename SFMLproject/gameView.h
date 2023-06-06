@@ -62,4 +62,5 @@ private:
 	* object holds menu items (title "Saper" and buttons with difficulty level) from sfml
 	*/
 	sf::Text menu_item[4];
+	sf::Text display_timer;
 };
