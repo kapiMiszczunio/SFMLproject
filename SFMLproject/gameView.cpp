@@ -56,7 +56,6 @@ int gameView::launch(float width, float height)
 				}
 				break;
 			}
-
 		}
 		window.clear();
 		window.draw(background);
@@ -119,7 +118,6 @@ int gameView::play(float width, float height, gameModel& model)
 		int xF = x - 1;
 		int yF = y - 1;
 
-
 		sf::Event playEvent;
 		while (play.pollEvent(playEvent)) {
 			if (playEvent.type == sf::Event::Closed) {
@@ -130,7 +128,6 @@ int gameView::play(float width, float height, gameModel& model)
 					play.close();
 				}
 			}
-			
 			if (playEvent.type == sf::Event::MouseButtonPressed) {
 
 				if (playEvent.key.code == sf::Mouse::Left) {
@@ -159,13 +156,13 @@ int gameView::play(float width, float height, gameModel& model)
 				}
 			}
 		}
-
 		
 		if (fieldLeft == 0)
 		{
 			play.close();
-			gameVictory screen;
-			return screen.draw_victory();
+			endGameScreen *screen = new gameVictory;
+			return screen -> draw();
+
 		}
 		play.clear(sf::Color::White);
 
@@ -177,8 +174,8 @@ int gameView::play(float width, float height, gameModel& model)
 						grid[i][j] = board[j][i]; //!!!!!
 						play.close();
 						
-						gameOver screen;
-						return screen.draw_game_over();
+						endGameScreen* screen = new gameOver;
+						return screen->draw();
 					}
 				}
 				spriteField.setTextureRect(sf::IntRect(grid[i][j] * fieldSize, 0, fieldSize, fieldSize));

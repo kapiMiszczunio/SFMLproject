@@ -1,4 +1,5 @@
 #include "endGameScreen.h"
+#include <stdlib.h>
 
 int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items)
 {
@@ -47,4 +48,47 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items)
 			window.display();
 		}
 	}
+}
+
+int endGameScreen::draw()
+{
+	sf::RenderWindow window(sf::VideoMode(400, 400), "Tanks for playing!", sf::Style::Titlebar | sf::Style::Close);
+	sf::Font font;
+	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
+	{
+		cout << "We have some trouble with finding font file!" << endl;
+	}
+	sf::Font font2;
+	if (!font2.loadFromFile("../Fonts/DS-DIGIB.ttf"))
+	{
+		cout << "We have some trouble with finding font file!" << endl;
+	}
+
+	window_item[0].setFont(font);
+	window_item[0].setFillColor(sf::Color::White);
+	window_item[0].setString("THANKS FOR PLAYING");
+	window_item[0].setCharacterSize(30);
+	window_item[0].setPosition(sf::Vector2f(window.getSize().x * 0.055, window.getSize().y * 0.1));
+	
+	window_item[1].setFont(font);
+	window_item[1].setFillColor(sf::Color::White);
+	window_item[1].setString("Game made by");
+	window_item[1].setCharacterSize(35);
+	window_item[1].setPosition(sf::Vector2f(window.getSize().x * 0.15, window.getSize().y * 0.2));
+
+	window_item[2].setFont(font);
+	window_item[2].setFillColor(sf::Color::White);
+	window_item[2].setString("Wojciech Lewko");
+	window_item[2].setCharacterSize(35);
+	window_item[2].setPosition(sf::Vector2f(window.getSize().x * 0.0725, window.getSize().y * 0.5));
+
+	window_item[3].setFont(font);
+	window_item[3].setFillColor(sf::Color::White);
+	window_item[3].setString("Kacper Perkowski");
+	window_item[3].setCharacterSize(35);
+	window_item[3].setPosition(sf::Vector2f(window.getSize().x * 0.0225, window.getSize().y * 0.6));
+
+	renderwindow(window, window_item);
+	window.close();
+	return decision;
 }

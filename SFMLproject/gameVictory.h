@@ -12,7 +12,7 @@ public:
 	* function draws end screen window if game is won
 	* @return returns decision in int about returning to menu
 	*/
-	int draw_victory();
+	int draw();
 
 	/*
 	* object with items to display

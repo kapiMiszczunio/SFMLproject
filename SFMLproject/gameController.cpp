@@ -36,5 +36,8 @@ void gameController::start_menu()
 		case 1:
 			start_menu();
 			break;
+		case 2:
+			endGameScreen * screen = new endGameScreen;
+			screen->draw();
 	}
 }

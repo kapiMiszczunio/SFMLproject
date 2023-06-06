@@ -1,6 +1,6 @@
 #include "gameOver.h"
 
-int gameOver::draw_game_over()
+int gameOver::draw()
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Game Over!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
@@ -37,7 +37,7 @@ int gameOver::draw_game_over()
 	game_over_item[3].setString("Exit");
 	game_over_item[3].setCharacterSize(40);
 	game_over_item[3].setPosition(sf::Vector2f(window.getSize().x * 0.4, window.getSize().y * 0.70));
-	
+
 	decision = renderwindow(window, game_over_item);
 	window.close();
 	return decision;

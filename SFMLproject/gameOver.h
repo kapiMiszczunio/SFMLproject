@@ -12,7 +12,7 @@ public:
 	* function draws end game if game is lost
 	* @return return decision in int to return to menu
 	*/
-	int draw_game_over();
+	int draw();
 
 	/*
 	* object to hold font for text
