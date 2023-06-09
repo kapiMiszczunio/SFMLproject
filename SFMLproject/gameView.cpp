@@ -1,6 +1,8 @@
 #include "gameView.h"
 #include "gameModel.h"
 #include "gameController.h"
+#include <chrono>
+using namespace std::chrono;
 
 gameView::~gameView()
 {
@@ -113,6 +115,7 @@ int gameView::play(float width, float height, gameModel& model)
 	sf::Clock timer;
 	start_timer = 1;
 
+
 	while (play.isOpen()) {
 		sf::Vector2i pos = sf::Mouse::getPosition(play);
 		int x = pos.x / (fieldSize * (width / (boardSize + 2)) / fieldSize);
@@ -120,8 +123,13 @@ int gameView::play(float width, float height, gameModel& model)
 		int xF = x - 1;
 		int yF = y - 1;
 		sf::Event playEvent;
+
+		auto elapsedTime = 0.0;
+
 		while (play.pollEvent(playEvent)) 
 		{
+			auto start1 = high_resolution_clock::now();
+
 			if (playEvent.type == sf::Event::Closed) {
 				play.close();
 			}
@@ -183,6 +191,8 @@ int gameView::play(float width, float height, gameModel& model)
 
 						
 						endGameScreen* screen = new gameOver;
+
+						auto end = high_resolution_clock::now();
 						curr_time = timer.getElapsedTime();
 						return screen->draw(curr_time);
 					}

@@ -27,7 +27,8 @@ int gameOver::draw(sf::Time time)
 	game_over_item[1].setFillColor(sf::Color::White);
 	string a = "Time: ";
 	string b = to_string(time.asSeconds());
-	string timee = a + b;
+	string c = " s";
+	string timee = a + b + c;
 	game_over_item[1].setString(timee);
 	game_over_item[1].setCharacterSize(40);
 	game_over_item[1].setPosition(sf::Vector2f(window.getSize().x * 0.2225, window.getSize().y * 0.2));

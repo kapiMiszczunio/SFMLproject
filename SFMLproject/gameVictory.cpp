@@ -25,7 +25,8 @@ int gameVictory::draw(sf::Time time)
 	victory_item[1].setFillColor(sf::Color::White);
 	string a = "Time: ";
 	string b = to_string(time.asSeconds());
-	string timee = a + b;
+	string c = " s";
+	string timee = a + b + c;
 	victory_item[1].setString(timee);
 	victory_item[1].setCharacterSize(40);
 	victory_item[1].setPosition(sf::Vector2f(window.getSize().x * 0.175, window.getSize().y * 0.25));
