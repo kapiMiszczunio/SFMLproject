@@ -7,12 +7,12 @@ int gameVictory::draw(sf::Time time)
 	sf::Font font;
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 	sf::Font font2;
 	if (!font2.loadFromFile("../Fonts/DS-DIGIB.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 	
 	victory_item[0].setFont(font);
@@ -23,9 +23,9 @@ int gameVictory::draw(sf::Time time)
 
 	victory_item[1].setFont(font2);
 	victory_item[1].setFillColor(sf::Color::White);
-	string a = "Time: ";
-	string b = to_string(time.asSeconds());
-	string timee = a + b;
+	std::string a = "Time: ";
+	std::string b = std::to_string(time.asSeconds());
+	std::string timee = a + b;
 	victory_item[1].setString(timee);
 	victory_item[1].setCharacterSize(40);
 	victory_item[1].setPosition(sf::Vector2f(window.getSize().x * 0.175, window.getSize().y * 0.25));

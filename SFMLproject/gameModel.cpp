@@ -8,7 +8,7 @@ void gameModel::generateBoard()
 {
 	//generates raw grid of the board with default values
 	for (int i = 0; i < this->boardSize; i++) {
-		vector<int> secondTab;
+		std::vector<int> secondTab;
 		this->board.push_back(secondTab);
 		for (int j = 0; j < this->boardSize; j++) {
 			this->board[i].push_back(0);
@@ -235,7 +235,7 @@ void gameModel::setGameDifficulty(int difficulty)
 
 void gameModel::generateGrid() {
 	for (int i = 0; i < this->boardSize; i++) {
-		vector<int> secondDeck;
+		std::vector<int> secondDeck;
 		grid.push_back(secondDeck);
 		for (int j = 0; j < this->boardSize; j++) {
 			grid[i].push_back(10);
@@ -243,7 +243,7 @@ void gameModel::generateGrid() {
 	}
 }
 
-vector<vector<int>> gameModel::getGrid()
+std::vector<std::vector<int>> gameModel::getGrid()
 {
 	return this->grid;
 }
@@ -268,7 +268,7 @@ int gameModel::getGameStatus()
 	return this->gameStatus;
 }
 
-vector<vector<int>> gameModel::getBoard()
+std::vector<std::vector<int>> gameModel::getBoard()
 {
 	return this->board;
 }

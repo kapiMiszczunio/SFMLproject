@@ -2,7 +2,6 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 #include "endGameScreen.h"
-using namespace std;
 
 class gameVictory : public endGameScreen
 {

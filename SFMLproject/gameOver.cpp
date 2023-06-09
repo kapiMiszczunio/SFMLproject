@@ -9,12 +9,12 @@ int gameOver::draw(sf::Time time)
 	sf::Font font;
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 	sf::Font font2;
 	if (!font2.loadFromFile("../Fonts/DS-DIGIB.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 
 	game_over_item[0].setFont(font);
@@ -25,9 +25,9 @@ int gameOver::draw(sf::Time time)
 
 	game_over_item[1].setFont(font2);
 	game_over_item[1].setFillColor(sf::Color::White);
-	string a = "Time: ";
-	string b = to_string(time.asSeconds());
-	string timee = a + b;
+	std::string a = "Time: ";
+	std::string b = std::to_string(time.asSeconds());
+	std::string timee = a + b;
 	game_over_item[1].setString(timee);
 	game_over_item[1].setCharacterSize(40);
 	game_over_item[1].setPosition(sf::Vector2f(window.getSize().x * 0.2225, window.getSize().y * 0.2));

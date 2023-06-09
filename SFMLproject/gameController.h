@@ -7,7 +7,6 @@
 #include <iostream>
 #include "gameView.h"
 #include "gameModel.h"
-using namespace std;
 
 class gameController 
 {

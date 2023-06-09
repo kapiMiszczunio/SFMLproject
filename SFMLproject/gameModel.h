@@ -2,7 +2,6 @@
 #include "ctime"
 #include "vector"
 #include <iostream>
-using namespace std;
 
 class gameModel 
 {
@@ -36,17 +35,17 @@ private:
 	/*
 	* vector of game board fields generate randomly
 	*/
-	vector<vector<int>> board;
+	std::vector<std::vector<int>> board;
 
 	/*
 	* vector of blocks grid
 	*/
-	vector<vector<int>> grid;
+	std::vector<std::vector<int>> grid;
 
 	enum difficulty {
 		easy = 1,
-		medium,
-		hard
+		medium = 2,
+		hard = 3
 	};
 
 	/*
@@ -79,7 +78,7 @@ public:
 	/*
 	* @return return of grid of the board in vector
 	*/
-	vector<vector<int>> getGrid();
+	std::vector<std::vector<int>> getGrid();
 
 	/*
 	* @return returns enum int game difficulty
@@ -94,7 +93,7 @@ public:
 	/*
 	* @return returns vector of the board
 	*/
-	vector<vector<int>> getBoard();
+	std::vector<std::vector<int>> getBoard();
 
 	/*
 	* function sets value of the game status

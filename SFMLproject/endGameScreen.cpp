@@ -11,7 +11,7 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items)
 	sf::Font font;
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 	while (window.isOpen())
 	{
@@ -56,12 +56,12 @@ int endGameScreen::draw(sf::Time time)
 	sf::Font font;
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 	sf::Font font2;
 	if (!font2.loadFromFile("../Fonts/DS-DIGIB.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 
 	window_item[0].setFont(font);

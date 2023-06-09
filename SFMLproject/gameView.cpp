@@ -18,7 +18,7 @@ int gameView::launch(float width, float height)
 	background.setTexture(&mainTexture);
 	if (!font.loadFromFile("../Fonts/arial.ttf"))
 	{
-		cout << "We have some trouble with finding font file!" << endl;
+		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 
 	while (window.isOpen())
@@ -105,8 +105,8 @@ int gameView::play(float width, float height, gameModel& model)
 	sf::Sprite spriteField(field);
 
 	int fieldSize = 32;
-	vector<vector<int>> grid = model.getGrid();
-	vector<vector<int>> board = model.getBoard();
+	std::vector<std::vector<int>> grid = model.getGrid();
+	std::vector<std::vector<int>> board = model.getBoard();
 	int boardSize = model.getBoardSize();
 
 	//ropoczêcie odliczania czasu

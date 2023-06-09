@@ -11,21 +11,8 @@ void gameController::start_menu()
 	gameView view;
 	difficulty = view.launch(600, 600);
 
-	switch (difficulty)
-	{
-	case 1:
-		model.setGameDifficulty(difficulty);
-		view.fieldLeft = model.getFieldLeft();
-		break;
-	case 2:
-		model.setGameDifficulty(difficulty);
-		view.fieldLeft = model.getFieldLeft();
-		break;
-	case 3:
-		model.setGameDifficulty(difficulty);
-		view.fieldLeft = model.getFieldLeft();
-		break;
-	}
+	model.setGameDifficulty(difficulty);
+	view.fieldLeft = model.getFieldLeft();
 
 	model.generateBoard();
 	model.generateGrid();
