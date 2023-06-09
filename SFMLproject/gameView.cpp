@@ -124,7 +124,6 @@ int gameView::play(float width, float height, gameModel& model)
 		int yF = y - 1;
 		sf::Event playEvent;
 
-		auto elapsedTime = 0.0;
 
 		while (play.pollEvent(playEvent)) 
 		{
@@ -177,7 +176,9 @@ int gameView::play(float width, float height, gameModel& model)
 			play.close();
 			endGameScreen *screen = new gameVictory;
 			curr_time = timer.getElapsedTime();
-			return screen -> draw(curr_time);
+			int after_screen = screen->draw(curr_time);
+			delete(screen);
+			return after_screen;
 		}
 		play.clear(sf::Color::White);
 
@@ -189,12 +190,11 @@ int gameView::play(float width, float height, gameModel& model)
 						grid[i][j] = board[j][i]; //!!!!!
 						play.close();
 
-						
-						endGameScreen* screen = new gameOver;
-
-						auto end = high_resolution_clock::now();
+						endGameScreen  *screen = new gameOver;
 						curr_time = timer.getElapsedTime();
-						return screen->draw(curr_time);
+						int after_screen = screen->draw(curr_time);
+						delete(screen);
+						return after_screen;
 					}
 				}
 				spriteField.setTextureRect(sf::IntRect(grid[i][j] * fieldSize, 0, fieldSize, fieldSize));

@@ -6,7 +6,7 @@
 class gameOver : public endGameScreen
 {
 public:
-
+	endGameScreen* screen;
 	/*
 	* function draws end game if game is lost
 	* @return return decision in int to return to menu

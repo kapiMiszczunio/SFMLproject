@@ -26,6 +26,7 @@ void gameController::start_menu()
 		case 2:
 			endGameScreen * screen = new endGameScreen;
 			screen->draw(view.curr_time);
+			delete(screen);
 
 	}
 }

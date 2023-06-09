@@ -6,7 +6,7 @@
 class gameVictory : public endGameScreen
 {
 public:
-
+	endGameScreen* screen;
 	/*
 	* function draws end screen window if game is won
 	* @return returns decision in int about returning to menu
