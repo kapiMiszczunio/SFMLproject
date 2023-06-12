@@ -1,8 +1,6 @@
 #include "gameView.h"
 #include "gameModel.h"
 #include "gameController.h"
-#include <chrono>
-using namespace std::chrono;
 
 gameView::~gameView()
 {
@@ -127,7 +125,6 @@ int gameView::play(float width, float height, gameModel& model)
 
 		while (play.pollEvent(playEvent)) 
 		{
-			auto start1 = high_resolution_clock::now();
 
 			if (playEvent.type == sf::Event::Closed) {
 				play.close();
@@ -187,7 +184,7 @@ int gameView::play(float width, float height, gameModel& model)
 				if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize)
 				{
 					if (grid[xF][yF] == 9) {
-						grid[i][j] = board[j][i]; //!!!!!
+						grid[i][j] = board[j][i]; 
 						play.close();
 
 						endGameScreen  *screen = new gameOver;
