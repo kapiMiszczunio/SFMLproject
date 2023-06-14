@@ -140,14 +140,17 @@
     <ClCompile Include="gameView.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="gameVictory.cpp" />
+    <ClCompile Include="scoreTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="endGameScreen.h" />
+    <ClInclude Include="enums.h" />
     <ClInclude Include="gameController.h" />
     <ClInclude Include="gameModel.h" />
     <ClInclude Include="gameOver.h" />
     <ClInclude Include="gameView.h" />
     <ClInclude Include="gameVictory.h" />
+    <ClInclude Include="scoreTable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

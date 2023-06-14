@@ -7,6 +7,7 @@
 #include <iostream>
 #include "gameView.h"
 #include "gameModel.h"
+#include "enums.h"
 
 class gameController 
 {
@@ -37,6 +38,6 @@ private:
 	/*
 	* variable holds value of game difficulty (1, 2 or 3)
 	*/
-	int difficulty;
+	gameModel::difficulty difficulty;
 };
 

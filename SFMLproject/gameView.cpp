@@ -1,12 +1,13 @@
 #include "gameView.h"
 #include "gameModel.h"
 #include "gameController.h"
+#include "scoreTable.h"
 
 gameView::~gameView()
 {
 }
 
-int gameView::launch(float width, float height)
+gameModel::difficulty gameView::launch(float width, float height)
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "SAPER", sf::Style::Titlebar | sf::Style::Close);
 	setIcon(window);
@@ -37,17 +38,17 @@ int gameView::launch(float width, float height)
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 360 && sf::Mouse::getPosition(window).y > 240 && sf::Mouse::getPosition(window).y < 290)
 					{
 						window.close();
-						return 1;
+						return gameModel::difficulty(easy);
 					}
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 410 && sf::Mouse::getPosition(window).y > 330 && sf::Mouse::getPosition(window).y < 380)
 					{
 						window.close();
-						return 2;
+						return gameModel::difficulty(medium);
 					}
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 360 && sf::Mouse::getPosition(window).y > 420 && sf::Mouse::getPosition(window).y < 470)
 					{
 						window.close();
-						return 3;
+						return gameModel::difficulty(hard);
 					}
 				}
 			case sf::Event::KeyPressed:
@@ -170,10 +171,11 @@ int gameView::play(float width, float height, gameModel& model)
 		
 		if (fieldLeft == 0)
 		{
+			curr_time = timer.getElapsedTime();
+			model.updateRanking(std::to_string(curr_time.asSeconds()));
 			play.close();
 			endGameScreen *screen = new gameVictory;
-			curr_time = timer.getElapsedTime();
-			int after_screen = screen->draw(curr_time);
+			int after_screen = screen->draw(curr_time, model.getGameDifficulty());
 			delete(screen);
 			return after_screen;
 		}
@@ -189,7 +191,7 @@ int gameView::play(float width, float height, gameModel& model)
 
 						endGameScreen  *screen = new gameOver;
 						curr_time = timer.getElapsedTime();
-						int after_screen = screen->draw(curr_time);
+						int after_screen = screen->draw(curr_time, model.getGameDifficulty());
 						delete(screen);
 						return after_screen;
 					}

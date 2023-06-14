@@ -1,7 +1,57 @@
 ﻿#include "gameModel.h"
+#include <fstream>
+#include <iostream>
+#include <string>
+
 
 gameModel::~gameModel()
 {
+}
+
+void gameModel::updateRanking(std::string time)
+{
+	std::fstream score;
+	switch (gameDifficulty)
+	{
+	case 1:
+		score.open("../Score/easy.txt");
+		difficult = "easy.txt";
+		break;
+	case 2:
+		score.open("../Score/medium.txt");
+		difficult = "medium.txt";
+		break;
+	case 3:
+		score.open("../Score/hard.txt");
+		difficult = "hard.txt";
+		break;
+	}
+	replace = "";
+	int a = 0;
+	if (score.is_open())
+	{
+		std::string line;
+
+		int b = 0;
+		while (getline(score, line))
+		{
+			scoree[b] = line;
+			if (std::stof(time) < std::stof(line) && a == 0)
+			{
+				scoree[b] = time;
+				a = 1;
+			}
+			b++;
+		}
+
+	}
+	score.close();
+	std::ofstream file("../Score/"+difficult);
+	for (int i = 0; i < 5; i++)
+	{
+		file << scoree[i] << std::endl;
+	}
+	
 }
 
 void gameModel::generateBoard()
@@ -214,22 +264,25 @@ void gameModel::generateBoard()
 	}
 }
 
-void gameModel::setGameDifficulty(int difficulty)
+void gameModel::setGameDifficulty(gameModel::difficulty difficulty)
 {
 	if (difficulty == easy) {
 		this->boardSize = 10;
 		this->numberOfBombs = 14;
 		this->fieldLeft = 100;
+		this->gameDifficulty = easy;
 	}
 	else if (difficulty == medium) {
 		this->boardSize = 15;
 		this->numberOfBombs = 40;
 		this->fieldLeft = 225;
+		this->gameDifficulty = medium;
 	}
 	else if (difficulty == hard) {
 		this->boardSize = 20;
 		this->numberOfBombs = 100;
 		this->fieldLeft = 400;
+		this->gameDifficulty = hard;
 	}
 }
 

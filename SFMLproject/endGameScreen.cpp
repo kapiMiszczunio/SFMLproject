@@ -1,8 +1,10 @@
 #include "endGameScreen.h"
 #include <stdlib.h>
+#include "scoreTable.h"
 
-int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items)
+int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items, int number_of_items, int difficulty)
 {
+
 	sf::RectangleShape background;
 	background.setSize(sf::Vector2f(400, 400));
 	sf::Texture backgroundTexture;
@@ -24,24 +26,56 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items)
 				window.close();
 				break;
 			case sf::Event::MouseButtonPressed:
-				if (event.mouseButton.button == sf::Mouse::Left)
+				if(number_of_items==5)
 				{
-					if (sf::Mouse::getPosition(window).x > 80 && sf::Mouse::getPosition(window).x < 320 && sf::Mouse::getPosition(window).y > 225 && sf::Mouse::getPosition(window).y < 260)
+					if (event.mouseButton.button == sf::Mouse::Left)
 					{
-						window.close();
-						return 1;
+
+						if (sf::Mouse::getPosition(window).x > 80 && sf::Mouse::getPosition(window).x < 320 && sf::Mouse::getPosition(window).y > 210 && sf::Mouse::getPosition(window).y < 240)
+						{
+							window.close();
+							return 1;
+						}
+						if (sf::Mouse::getPosition(window).x > 60 && sf::Mouse::getPosition(window).x < 350 && sf::Mouse::getPosition(window).y > 270 && sf::Mouse::getPosition(window).y < 300)
+						{
+							
+							scoreTable table;
+							table.readTable(difficulty);
+							table.displayTable();
+
+						}
+						if (sf::Mouse::getPosition(window).x > 160 && sf::Mouse::getPosition(window).x < 250 && sf::Mouse::getPosition(window).y > 330 && sf::Mouse::getPosition(window).y < 360)
+						{
+							window.close();
+							return 2;
+						}
 					}
-					if (sf::Mouse::getPosition(window).x > 150 && sf::Mouse::getPosition(window).x < 250 && sf::Mouse::getPosition(window).y > 290 && sf::Mouse::getPosition(window).y < 320)
+				
+				}
+				else if(number_of_items==4)
+				{
+					if (event.mouseButton.button == sf::Mouse::Left)
 					{
-						window.close();
-						return 2;
+						if (sf::Mouse::getPosition(window).x > 80 && sf::Mouse::getPosition(window).x < 320 && sf::Mouse::getPosition(window).y > 225 && sf::Mouse::getPosition(window).y < 260)
+						{
+							window.close();
+							return 1;
+						}
+						if (sf::Mouse::getPosition(window).x > 150 && sf::Mouse::getPosition(window).x < 250 && sf::Mouse::getPosition(window).y > 290 && sf::Mouse::getPosition(window).y < 320)
+						{
+							window.close();
+							return 2;
+						}
 					}
 				}
+
+
+
 			}
 
 			window.clear();
 			window.draw(background);
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < number_of_items; i++)
 			{
 				window.draw(items[i]);
 			}
@@ -50,7 +84,7 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items)
 	}
 }
 
-int endGameScreen::draw(sf::Time time)
+int endGameScreen::draw(sf::Time time, int difficulty)
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Tanks for playing!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
@@ -88,7 +122,8 @@ int endGameScreen::draw(sf::Time time)
 	window_item[3].setCharacterSize(35);
 	window_item[3].setPosition(sf::Vector2f(window.getSize().x * 0.0225, window.getSize().y * 0.6));
 
-	renderwindow(window, window_item);
+	renderwindow(window, window_item, 4, difficulty);
 	window.close();
 	return decision;
 }
+

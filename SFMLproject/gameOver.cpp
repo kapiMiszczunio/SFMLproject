@@ -1,7 +1,7 @@
 #include "gameOver.h"
 #include <string>
 
-int gameOver::draw(sf::Time time)
+int gameOver::draw(sf::Time time, int difficulty)
 {
 	
 
@@ -45,7 +45,7 @@ int gameOver::draw(sf::Time time)
 	game_over_item[3].setCharacterSize(40);
 	game_over_item[3].setPosition(sf::Vector2f(window.getSize().x * 0.4, window.getSize().y * 0.70));
 
-	decision = renderwindow(window, game_over_item);
+	decision = renderwindow(window, game_over_item, 4, difficulty);
 	window.close();
 	return decision;
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "ctime"
+//#include "enums.h"
 #include "vector"
 #include <iostream>
 
@@ -42,29 +43,35 @@ private:
 	*/
 	std::vector<std::vector<int>> grid;
 
-	enum difficulty {
-		easy = 1,
-		medium = 2,
-		hard = 3
-	};
-
 	/*
 	* variable holds enum number of game difficulty
 	*/
-	int gameDifficulty;
+	//ameModel::difficulty gameDifficulty;
 
 	/*
 	* variable holds status of the game
 	*/
 	int gameStatus;
+	std::string difficult;
+	std::string replace;
+	std::string scoree[5];
 
 public:
 
+
+	enum difficulty {
+		easy = 1,
+		medium = 2,
+		hard = 3
+	};
+	gameModel::difficulty gameDifficulty;
 	/*
 	* destructor of gameModel
 	*/
 	~gameModel();
 
+
+	void updateRanking(std::string time);
 	/*
 	* function generates board with randomly chosen bombs positions and calculated number of bombs for every field
 	*/
@@ -74,6 +81,7 @@ public:
 	* function generates basic grid of board
 	*/
 	void generateGrid();
+	//void readHighscore();
 
 	/*
 	* @return return of grid of the board in vector
@@ -105,7 +113,7 @@ public:
 	* function sets value of the game diffculty
 	* @param difficulty level of game in enum difficulty (easy, medium or hard)
 	*/
-	void setGameDifficulty(int difficulty);
+	void setGameDifficulty(gameModel::difficulty difficulty);
 
 	/*
 	* @return returns int of board size

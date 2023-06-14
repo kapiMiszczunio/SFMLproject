@@ -1,7 +1,7 @@
 #include "gameVictory.h"
 
 
-int gameVictory::draw(sf::Time time)
+int gameVictory::draw(sf::Time time, int difficulty)
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "VICTORY!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
@@ -35,15 +35,23 @@ int gameVictory::draw(sf::Time time)
 	victory_item[2].setFillColor(sf::Color::White);
 	victory_item[2].setString("Try again");
 	victory_item[2].setCharacterSize(40);
-	victory_item[2].setPosition(sf::Vector2f(window.getSize().x * 0.2225, window.getSize().y * 0.55));
+	victory_item[2].setPosition(sf::Vector2f(window.getSize().x * 0.2225, window.getSize().y * 0.50));
 
 	victory_item[3].setFont(font);
 	victory_item[3].setFillColor(sf::Color::White);
-	victory_item[3].setString("Exit");
+	victory_item[3].setString("Best scores");
 	victory_item[3].setCharacterSize(40);
-	victory_item[3].setPosition(sf::Vector2f(window.getSize().x * 0.4, window.getSize().y * 0.70));
+	victory_item[3].setPosition(sf::Vector2f(window.getSize().x * 0.15, window.getSize().y * 0.65));
 
-	decision = renderwindow(window, victory_item);
+	victory_item[4].setFont(font);
+	victory_item[4].setFillColor(sf::Color::White);
+	victory_item[4].setString("Exit");
+	victory_item[4].setCharacterSize(40);
+	victory_item[4].setPosition(sf::Vector2f(window.getSize().x * 0.4, window.getSize().y * 0.80));
+
+
+	decision = renderwindow(window, victory_item, 5, difficulty);
 	window.close();
 	return decision;
 }
+

@@ -19,7 +19,7 @@ public:
 	* @param window height
 	* @return returns difficulty level (1, 2 or 3)
 	*/
-	int launch(float width, float height);
+gameModel::difficulty launch(float width, float height);
 
 	/*
 	* function renders main menu
