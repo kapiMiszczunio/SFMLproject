@@ -11,7 +11,7 @@ public:
 	* function draws end game if game is lost
 	* @return return decision in int to return to menu
 	*/
-	int draw(sf::Time time, int difficulty);
+	continuation draw(sf::Time time, difficulty difficulty);
 
 	/*
 	* object to hold font for text
@@ -26,6 +26,6 @@ public:
 	/*
 	* variable holds decision of returning to menu
 	*/
-	int decision;
+	continuation decision;
 };
 

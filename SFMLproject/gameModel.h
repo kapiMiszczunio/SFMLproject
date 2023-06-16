@@ -1,6 +1,6 @@
 #pragma once
 #include "ctime"
-//#include "enums.h"
+#include "enums.h"
 #include "vector"
 #include <iostream>
 
@@ -46,30 +46,23 @@ private:
 	/*
 	* variable holds enum number of game difficulty
 	*/
-	//ameModel::difficulty gameDifficulty;
+	difficulty gameDifficulty;
 
 	/*
 	* variable holds status of the game
 	*/
-	int gameStatus;
+	continuation gameStatus;
 	std::string difficult;
 	std::string replace;
 	std::string scoree[5];
 
+
+
 public:
-
-
-	enum difficulty {
-		easy = 1,
-		medium = 2,
-		hard = 3
-	};
-	gameModel::difficulty gameDifficulty;
 	/*
 	* destructor of gameModel
 	*/
 	~gameModel();
-
 
 	void updateRanking(std::string time);
 	/*
@@ -91,12 +84,12 @@ public:
 	/*
 	* @return returns enum int game difficulty
 	*/
-	int getGameDifficulty();
+	difficulty getGameDifficulty();
 
 	/*
 	* @return returns status of the game in int
 	*/
-	int getGameStatus();
+	continuation getGameStatus();
 
 	/*
 	* @return returns vector of the board
@@ -107,13 +100,13 @@ public:
 	* function sets value of the game status
 	* @param status of the game in int
 	*/
-	void setGameStatus(int gameStatus);
+	void setGameStatus(continuation gameStatus);
 
 	/*
 	* function sets value of the game diffculty
 	* @param difficulty level of game in enum difficulty (easy, medium or hard)
 	*/
-	void setGameDifficulty(gameModel::difficulty difficulty);
+	void setGameDifficulty(difficulty difficulty);
 
 	/*
 	* @return returns int of board size

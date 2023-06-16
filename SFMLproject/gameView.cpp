@@ -7,7 +7,7 @@ gameView::~gameView()
 {
 }
 
-gameModel::difficulty gameView::launch(float width, float height)
+difficulty gameView::launch(float width, float height)
 {
 	sf::RenderWindow window(sf::VideoMode(width, height), "SAPER", sf::Style::Titlebar | sf::Style::Close);
 	setIcon(window);
@@ -38,17 +38,17 @@ gameModel::difficulty gameView::launch(float width, float height)
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 360 && sf::Mouse::getPosition(window).y > 240 && sf::Mouse::getPosition(window).y < 290)
 					{
 						window.close();
-						return gameModel::difficulty(easy);
+						return difficulty(easy);
 					}
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 410 && sf::Mouse::getPosition(window).y > 330 && sf::Mouse::getPosition(window).y < 380)
 					{
 						window.close();
-						return gameModel::difficulty(medium);
+						return difficulty(medium);
 					}
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 360 && sf::Mouse::getPosition(window).y > 420 && sf::Mouse::getPosition(window).y < 470)
 					{
 						window.close();
-						return gameModel::difficulty(hard);
+						return difficulty(hard);
 					}
 				}
 			case sf::Event::KeyPressed:
@@ -97,7 +97,7 @@ void gameView::draw_menu(sf::RenderWindow& window, sf::Font font)
 	}
 }
 
-int gameView::play(float width, float height, gameModel& model)
+continuation gameView::play(float width, float height, gameModel& model)
 {
 	sf::RenderWindow play(sf::VideoMode(width, height), "Saper", sf::Style::Titlebar | sf::Style::Close);
 	setIcon(play);
@@ -175,7 +175,7 @@ int gameView::play(float width, float height, gameModel& model)
 			model.updateRanking(std::to_string(curr_time.asSeconds()));
 			play.close();
 			endGameScreen *screen = new gameVictory;
-			int after_screen = screen->draw(curr_time, model.getGameDifficulty());
+			continuation after_screen = screen->draw(curr_time, model.getGameDifficulty());
 			delete(screen);
 			return after_screen;
 		}
@@ -191,7 +191,7 @@ int gameView::play(float width, float height, gameModel& model)
 
 						endGameScreen  *screen = new gameOver;
 						curr_time = timer.getElapsedTime();
-						int after_screen = screen->draw(curr_time, model.getGameDifficulty());
+						continuation after_screen = screen->draw(curr_time, model.getGameDifficulty());
 						delete(screen);
 						return after_screen;
 					}

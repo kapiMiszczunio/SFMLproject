@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include <stdlib.h>
 #include "gameModel.h"
+#include "enums.h"
 //#include "scoreTable.h"
 
 class endGameScreen
@@ -13,11 +14,11 @@ public:
 	* @param RenderWindow object from sfml
 	* @param items to display from sfml
 	*/
-	int renderwindow(sf::RenderWindow& window, sf::Text *items, int number_of_items, int difficulty);
-	virtual int draw(sf::Time time, int difficulty);
+	continuation renderwindow(sf::RenderWindow& window, sf::Text *items, int number_of_items, difficulty difficulty);
+	virtual continuation draw(sf::Time time, difficulty difficulty);
 	sf::Text window_item[4];
 	sf::Font font;
-	int decision;
+	continuation decision;
 };
 
 

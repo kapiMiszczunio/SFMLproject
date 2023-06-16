@@ -3,6 +3,7 @@
 #include "gameOver.h"
 #include "gameVictory.h"
 #include "SFML/Graphics.hpp"
+#include "enums.h"
 
 class gameView
 {
@@ -19,7 +20,7 @@ public:
 	* @param window height
 	* @return returns difficulty level (1, 2 or 3)
 	*/
-gameModel::difficulty launch(float width, float height);
+	difficulty launch(float width, float height);
 
 	/*
 	* function renders main menu
@@ -35,7 +36,7 @@ gameModel::difficulty launch(float width, float height);
 	* @param object of gameModel
 	* @return returns end screen
 	*/
-	int play(float width, float height, gameModel& model);
+	continuation play(float width, float height, gameModel& model);
 
 	/*
 	* function sets window icon picture

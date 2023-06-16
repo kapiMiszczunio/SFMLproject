@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "scoreTable.h"
 
-int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items, int number_of_items, int difficulty)
+continuation endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items, int number_of_items, difficulty difficulty)
 {
 
 	sf::RectangleShape background;
@@ -34,7 +34,7 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items, int n
 						if (sf::Mouse::getPosition(window).x > 80 && sf::Mouse::getPosition(window).x < 320 && sf::Mouse::getPosition(window).y > 210 && sf::Mouse::getPosition(window).y < 240)
 						{
 							window.close();
-							return 1;
+							return tryAgain;
 						}
 						if (sf::Mouse::getPosition(window).x > 60 && sf::Mouse::getPosition(window).x < 350 && sf::Mouse::getPosition(window).y > 270 && sf::Mouse::getPosition(window).y < 300)
 						{
@@ -47,7 +47,7 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items, int n
 						if (sf::Mouse::getPosition(window).x > 160 && sf::Mouse::getPosition(window).x < 250 && sf::Mouse::getPosition(window).y > 330 && sf::Mouse::getPosition(window).y < 360)
 						{
 							window.close();
-							return 2;
+							return end;
 						}
 					}
 				
@@ -59,12 +59,12 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items, int n
 						if (sf::Mouse::getPosition(window).x > 80 && sf::Mouse::getPosition(window).x < 320 && sf::Mouse::getPosition(window).y > 225 && sf::Mouse::getPosition(window).y < 260)
 						{
 							window.close();
-							return 1;
+							return tryAgain;
 						}
 						if (sf::Mouse::getPosition(window).x > 150 && sf::Mouse::getPosition(window).x < 250 && sf::Mouse::getPosition(window).y > 290 && sf::Mouse::getPosition(window).y < 320)
 						{
 							window.close();
-							return 2;
+							return end;
 						}
 					}
 				}
@@ -84,7 +84,7 @@ int endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *items, int n
 	}
 }
 
-int endGameScreen::draw(sf::Time time, int difficulty)
+continuation endGameScreen::draw(sf::Time time, difficulty difficulty)
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Tanks for playing!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
@@ -122,7 +122,7 @@ int endGameScreen::draw(sf::Time time, int difficulty)
 	window_item[3].setCharacterSize(35);
 	window_item[3].setPosition(sf::Vector2f(window.getSize().x * 0.0225, window.getSize().y * 0.6));
 
-	renderwindow(window, window_item, 4, difficulty);
+	decision = renderwindow(window, window_item, 4, difficulty);
 	window.close();
 	return decision;
 }

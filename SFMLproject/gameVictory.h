@@ -13,7 +13,7 @@ public:
 	* function draws end screen window if game is won
 	* @return returns decision in int about returning to menu
 	*/
-	int draw(sf::Time time, int difficulty);
+	continuation draw(sf::Time time, difficulty difficulty);
 	/*
 	* object with items to display
 	*/
@@ -27,6 +27,6 @@ public:
 	/*
 	* variable holds decision of returning to menu
 	*/
-	int decision;
+	continuation decision;
 };
 

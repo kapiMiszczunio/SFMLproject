@@ -1,7 +1,7 @@
 #include "gameVictory.h"
 
 
-int gameVictory::draw(sf::Time time, int difficulty)
+continuation gameVictory::draw(sf::Time time, difficulty difficulty)
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "VICTORY!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;

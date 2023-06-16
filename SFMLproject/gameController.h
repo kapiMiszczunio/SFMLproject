@@ -38,6 +38,6 @@ private:
 	/*
 	* variable holds value of game difficulty (1, 2 or 3)
 	*/
-	gameModel::difficulty difficulty;
+	difficulty difficulty;
 };
 

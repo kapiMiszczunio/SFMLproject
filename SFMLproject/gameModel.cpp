@@ -264,7 +264,7 @@ void gameModel::generateBoard()
 	}
 }
 
-void gameModel::setGameDifficulty(gameModel::difficulty difficulty)
+void gameModel::setGameDifficulty(difficulty difficulty)
 {
 	if (difficulty == easy) {
 		this->boardSize = 10;
@@ -311,12 +311,12 @@ int gameModel::getFieldLeft()
 	return this->fieldLeft;
 }
 
-int gameModel::getGameDifficulty()
+difficulty gameModel::getGameDifficulty()
 {
 	return this->gameDifficulty;
 }
 
-int gameModel::getGameStatus()
+continuation gameModel::getGameStatus()
 {
 	return this->gameStatus;
 }
@@ -326,7 +326,7 @@ std::vector<std::vector<int>> gameModel::getBoard()
 	return this->board;
 }
 
-void gameModel::setGameStatus(int gameStatus)
+void gameModel::setGameStatus(continuation gameStatus)
 {
 	this->gameStatus = gameStatus;
 }

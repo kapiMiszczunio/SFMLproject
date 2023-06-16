@@ -1,7 +1,7 @@
 #include "gameOver.h"
 #include <string>
 
-int gameOver::draw(sf::Time time, int difficulty)
+continuation gameOver::draw(sf::Time time, difficulty difficulty)
 {
 	
 

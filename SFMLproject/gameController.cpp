@@ -9,6 +9,7 @@ void gameController::start_menu()
 {
 	gameModel model;
 	gameView view;
+
 	difficulty = view.launch(600, 600);
 	model.setGameDifficulty(difficulty);
 	view.fieldLeft = model.getFieldLeft();
@@ -19,10 +20,10 @@ void gameController::start_menu()
 
 	switch (model.getGameStatus())
 	{
-		case 1:
+		case tryAgain:
 			start_menu();
 			break;
-		case 2:
+		case end:
 			endGameScreen * screen = new endGameScreen;
 			screen->draw(view.curr_time, model.getGameDifficulty());
 			delete(screen);
