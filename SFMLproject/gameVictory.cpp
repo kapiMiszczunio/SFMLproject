@@ -1,14 +1,15 @@
 #include "gameVictory.h"
 
-
 continuation gameVictory::draw(sf::Time time, difficulty difficulty)
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "VICTORY!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
+
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
 		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
+
 	sf::Font font2;
 	if (!font2.loadFromFile("../Fonts/DS-DIGIB.ttf"))
 	{
@@ -49,9 +50,9 @@ continuation gameVictory::draw(sf::Time time, difficulty difficulty)
 	victory_item[4].setCharacterSize(40);
 	victory_item[4].setPosition(sf::Vector2f(window.getSize().x * 0.4, window.getSize().y * 0.80));
 
-
 	decision = renderwindow(window, victory_item, 5, difficulty);
 	window.close();
+
 	return decision;
 }
 

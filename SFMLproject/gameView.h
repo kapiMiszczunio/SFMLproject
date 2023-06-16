@@ -48,8 +48,11 @@ public:
 	* variable holds number of unrevealed fields
 	*/
 	int fieldLeft;
+
+	/*
+	* object holding time
+	*/
 	sf::Time curr_time;
-	//sf::Clock timer;
 
 private:
 
@@ -57,11 +60,25 @@ private:
 	* object holds object of font from sfml
 	*/
 	sf::Font font;
-	int start_timer;
+
+	/*
+	*  variable preventing timer from restarting multiple times
+	*/
+	bool start_timer;
 
 	/*
 	* object holds menu items (title "Saper" and buttons with difficulty level) from sfml
 	*/
 	sf::Text menu_item[4];
+	
+	/*
+	* sf::text value of timer
+	*/
 	sf::Text display_timer;
+
+	/*
+	* texture used in game
+	*/
+	sf::Texture field;
+
 };

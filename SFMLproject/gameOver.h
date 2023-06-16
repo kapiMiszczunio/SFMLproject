@@ -1,6 +1,5 @@
 #pragma once
 #include "SFML/Graphics.hpp"
-#include <iostream>
 #include "endGameScreen.h"
 
 class gameOver : public endGameScreen
@@ -17,6 +16,11 @@ public:
 	* object to hold font for text
 	*/
 	sf::Font font;
+
+	/*
+	* object to hold font for text
+	*/
+	sf::Font font2;
 
 	/*
 	* object with items to display

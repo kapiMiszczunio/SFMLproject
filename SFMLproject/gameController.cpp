@@ -4,7 +4,6 @@ gameController::~gameController()
 {
 }
 
-
 void gameController::start_menu()
 {
 	gameModel model;
@@ -13,7 +12,6 @@ void gameController::start_menu()
 	difficulty = view.launch(600, 600);
 	model.setGameDifficulty(difficulty);
 	view.fieldLeft = model.getFieldLeft();
-
 	model.generateBoard();
 	model.generateGrid();
 	model.setGameStatus(view.play(600, 600, model));
@@ -27,6 +25,5 @@ void gameController::start_menu()
 			endGameScreen * screen = new endGameScreen;
 			screen->draw(view.curr_time, model.getGameDifficulty());
 			delete(screen);
-
 	}
 }

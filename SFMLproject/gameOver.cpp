@@ -4,13 +4,14 @@
 continuation gameOver::draw(sf::Time time, difficulty difficulty)
 {
 	
-
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Game Over!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
+	
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
 		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
+	
 	sf::Font font2;
 	if (!font2.loadFromFile("../Fonts/DS-DIGIB.ttf"))
 	{

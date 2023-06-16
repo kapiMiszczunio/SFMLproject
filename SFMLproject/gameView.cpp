@@ -17,6 +17,7 @@ difficulty gameView::launch(float width, float height)
 	sf::Texture mainTexture;
 	mainTexture.loadFromFile("../Images/menuBackground.png");
 	background.setTexture(&mainTexture);
+	
 	if (!font.loadFromFile("../Fonts/arial.ttf"))
 	{
 		std::cout << "We have some trouble with finding font file!" << std::endl;
@@ -25,6 +26,7 @@ difficulty gameView::launch(float width, float height)
 	while (window.isOpen())
 	{
 		sf::Event event;
+
 		while (window.pollEvent(event))
 		{
 			switch (event.type)
@@ -40,17 +42,20 @@ difficulty gameView::launch(float width, float height)
 						window.close();
 						return difficulty(easy);
 					}
+
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 410 && sf::Mouse::getPosition(window).y > 330 && sf::Mouse::getPosition(window).y < 380)
 					{
 						window.close();
 						return difficulty(medium);
 					}
+
 					if (sf::Mouse::getPosition(window).x > 230 && sf::Mouse::getPosition(window).x < 360 && sf::Mouse::getPosition(window).y > 420 && sf::Mouse::getPosition(window).y < 470)
 					{
 						window.close();
 						return difficulty(hard);
 					}
 				}
+				break;
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::Escape) {
 					window.close();
@@ -58,6 +63,7 @@ difficulty gameView::launch(float width, float height)
 				break;
 			}
 		}
+
 		window.clear();
 		window.draw(background);
 		draw_menu(window, font);
@@ -99,7 +105,7 @@ void gameView::draw_menu(sf::RenderWindow& window, sf::Font font)
 
 continuation gameView::play(float width, float height, gameModel& model)
 {
-	sf::RenderWindow play(sf::VideoMode(width, height), "Saper", sf::Style::Titlebar | sf::Style::Close);
+	sf::RenderWindow play(sf::VideoMode(width, height), "SAPER", sf::Style::Titlebar | sf::Style::Close);
 	setIcon(play);
 	sf::Texture field;
 	field.loadFromFile("../Images/tiles.jpg");
@@ -112,8 +118,7 @@ continuation gameView::play(float width, float height, gameModel& model)
 
 	//ropoczêcie odliczania czasu
 	sf::Clock timer;
-	start_timer = 1;
-
+	start_timer = true;
 
 	while (play.isOpen()) {
 		sf::Vector2i pos = sf::Mouse::getPosition(play);
@@ -123,25 +128,27 @@ continuation gameView::play(float width, float height, gameModel& model)
 		int yF = y - 1;
 		sf::Event playEvent;
 
-
 		while (play.pollEvent(playEvent)) 
 		{
 
 			if (playEvent.type == sf::Event::Closed) {
 				play.close();
 			}
+
 			if (playEvent.type == sf::Event::KeyPressed) {
 				if (playEvent.key.code == sf::Keyboard::Escape) {
 					play.close();
 				}
 			}
+
 			if (playEvent.type == sf::Event::MouseButtonPressed) {
 				if (playEvent.key.code == sf::Mouse::Left) {
-					if (start_timer == 1)
+					if (start_timer == true)
 					{
 						timer.restart();
-						start_timer = 0;
+						start_timer = false;
 					}
+
 					if (xF >= 0 and xF < boardSize and yF >= 0 and yF < boardSize) {
 						if (grid[xF][yF] == 10)
 						{
@@ -179,6 +186,7 @@ continuation gameView::play(float width, float height, gameModel& model)
 			delete(screen);
 			return after_screen;
 		}
+
 		play.clear(sf::Color::White);
 
 		for (int i = 0; i < boardSize; i++) {
@@ -188,7 +196,6 @@ continuation gameView::play(float width, float height, gameModel& model)
 					if (grid[xF][yF] == 9) {
 						grid[i][j] = board[j][i]; 
 						play.close();
-
 						endGameScreen  *screen = new gameOver;
 						curr_time = timer.getElapsedTime();
 						continuation after_screen = screen->draw(curr_time, model.getGameDifficulty());
@@ -196,6 +203,7 @@ continuation gameView::play(float width, float height, gameModel& model)
 						return after_screen;
 					}
 				}
+
 				spriteField.setTextureRect(sf::IntRect(grid[i][j] * fieldSize, 0, fieldSize, fieldSize));
 				spriteField.setScale((width / (boardSize + 2)) / fieldSize, (width / (boardSize + 2)) / fieldSize);
 				spriteField.setPosition((i + 1) * width / (boardSize + 2), (j + 1) * width / (boardSize + 2));

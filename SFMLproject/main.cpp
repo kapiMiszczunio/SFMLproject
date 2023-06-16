@@ -1,5 +1,6 @@
 ﻿#include "gameController.h"
 #include "scoreTable.h"
+
 int main()
 {
 	gameController controller;

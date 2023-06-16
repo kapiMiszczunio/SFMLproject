@@ -52,11 +52,16 @@ private:
 	* variable holds status of the game
 	*/
 	continuation gameStatus;
+
+	/*
+	* string containing file name
+	*/
 	std::string difficult;
-	std::string replace;
+
+	/*
+	* array containing score from file
+	*/
 	std::string scoree[5];
-
-
 
 public:
 	/*
@@ -64,7 +69,12 @@ public:
 	*/
 	~gameModel();
 
+	/*
+	* function that overwrite file with best scores
+	* @param time
+	*/
 	void updateRanking(std::string time);
+
 	/*
 	* function generates board with randomly chosen bombs positions and calculated number of bombs for every field
 	*/

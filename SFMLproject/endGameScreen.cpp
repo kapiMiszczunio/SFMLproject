@@ -11,13 +11,16 @@ continuation endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *ite
 	backgroundTexture.loadFromFile("../Images/end_background.png");
 	background.setTexture(&backgroundTexture);
 	sf::Font font;
+
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
 		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
+
 	while (window.isOpen())
 	{
 		sf::Event event;
+
 		while (window.pollEvent(event))
 		{
 			switch (event.type)
@@ -30,29 +33,27 @@ continuation endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *ite
 				{
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
-
 						if (sf::Mouse::getPosition(window).x > 80 && sf::Mouse::getPosition(window).x < 320 && sf::Mouse::getPosition(window).y > 210 && sf::Mouse::getPosition(window).y < 240)
 						{
 							window.close();
 							return tryAgain;
 						}
+						
 						if (sf::Mouse::getPosition(window).x > 60 && sf::Mouse::getPosition(window).x < 350 && sf::Mouse::getPosition(window).y > 270 && sf::Mouse::getPosition(window).y < 300)
 						{
-							
 							scoreTable table;
 							table.readTable(difficulty);
 							table.displayTable();
-
 						}
+
 						if (sf::Mouse::getPosition(window).x > 160 && sf::Mouse::getPosition(window).x < 250 && sf::Mouse::getPosition(window).y > 330 && sf::Mouse::getPosition(window).y < 360)
 						{
 							window.close();
 							return end;
 						}
 					}
-				
 				}
-				else if(number_of_items==4)
+				else if (number_of_items == 4)
 				{
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
@@ -61,6 +62,7 @@ continuation endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *ite
 							window.close();
 							return tryAgain;
 						}
+
 						if (sf::Mouse::getPosition(window).x > 150 && sf::Mouse::getPosition(window).x < 250 && sf::Mouse::getPosition(window).y > 290 && sf::Mouse::getPosition(window).y < 320)
 						{
 							window.close();
@@ -68,17 +70,16 @@ continuation endGameScreen::renderwindow(sf::RenderWindow& window, sf::Text *ite
 						}
 					}
 				}
-
-
-
 			}
 
 			window.clear();
 			window.draw(background);
+			
 			for (int i = 0; i < number_of_items; i++)
 			{
 				window.draw(items[i]);
 			}
+
 			window.display();
 		}
 	}
@@ -88,11 +89,13 @@ continuation endGameScreen::draw(sf::Time time, difficulty difficulty)
 {
 	sf::RenderWindow window(sf::VideoMode(400, 400), "Tanks for playing!", sf::Style::Titlebar | sf::Style::Close);
 	sf::Font font;
+
 	if (!font.loadFromFile("../Fonts/Astronomus.ttf"))
 	{
 		std::cout << "We have some trouble with finding font file!" << std::endl;
 	}
 	sf::Font font2;
+	
 	if (!font2.loadFromFile("../Fonts/DS-DIGIB.ttf"))
 	{
 		std::cout << "We have some trouble with finding font file!" << std::endl;

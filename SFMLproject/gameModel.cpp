@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 
-
 gameModel::~gameModel()
 {
 }
@@ -11,6 +10,7 @@ gameModel::~gameModel()
 void gameModel::updateRanking(std::string time)
 {
 	std::fstream score;
+
 	switch (gameDifficulty)
 	{
 	case 1:
@@ -26,7 +26,7 @@ void gameModel::updateRanking(std::string time)
 		difficult = "hard.txt";
 		break;
 	}
-	replace = "";
+
 	int a = 0;
 	if (score.is_open())
 	{
@@ -45,8 +45,10 @@ void gameModel::updateRanking(std::string time)
 		}
 
 	}
+
 	score.close();
 	std::ofstream file("../Score/"+difficult);
+	
 	for (int i = 0; i < 5; i++)
 	{
 		file << scoree[i] << std::endl;
