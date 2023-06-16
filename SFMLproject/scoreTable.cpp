@@ -55,32 +55,32 @@ void scoreTable::displayTable()
 	ranking[0].setFont(font);
 	ranking[0].setFillColor(sf::Color::White);
 	ranking[0].setString("1 - " + tablescore[0]);
-	ranking[0].setCharacterSize(40);
-	ranking[0].setPosition(sf::Vector2f(table.getSize().x * 0.0725, table.getSize().y * 0.1));
+	ranking[0].setCharacterSize(50);
+	ranking[0].setPosition(sf::Vector2f(table.getSize().x * 0.15, table.getSize().y * 0.1));
 
 	ranking[1].setFont(font);
 	ranking[1].setFillColor(sf::Color::White);
 	ranking[1].setString("2 - " + tablescore[1]);
-	ranking[1].setCharacterSize(40);
-	ranking[1].setPosition(sf::Vector2f(table.getSize().x * 0.0725, table.getSize().y * 0.2));
+	ranking[1].setCharacterSize(50);
+	ranking[1].setPosition(sf::Vector2f(table.getSize().x * 0.15, table.getSize().y * 0.25));
 
 	ranking[2].setFont(font);
 	ranking[2].setFillColor(sf::Color::White);
 	ranking[2].setString("3 - " + tablescore[2]);
-	ranking[2].setCharacterSize(40);
-	ranking[2].setPosition(sf::Vector2f(table.getSize().x * 0.0725, table.getSize().y * 0.3));
+	ranking[2].setCharacterSize(50);
+	ranking[2].setPosition(sf::Vector2f(table.getSize().x * 0.15, table.getSize().y * 0.4));
 
 	ranking[3].setFont(font);
 	ranking[3].setFillColor(sf::Color::White);
 	ranking[3].setString("4 - "+tablescore[3]);
-	ranking[3].setCharacterSize(40);
-	ranking[3].setPosition(sf::Vector2f(table.getSize().x * 0.0725, table.getSize().y * 0.4));
+	ranking[3].setCharacterSize(50);
+	ranking[3].setPosition(sf::Vector2f(table.getSize().x * 0.15, table.getSize().y * 0.55));
 
 	ranking[4].setFont(font);
 	ranking[4].setFillColor(sf::Color::White);
 	ranking[4].setString("5 - "+tablescore[4]);
-	ranking[4].setCharacterSize(40);
-	ranking[4].setPosition(sf::Vector2f(table.getSize().x * 0.0725, table.getSize().y * 0.5));
+	ranking[4].setCharacterSize(50);
+	ranking[4].setPosition(sf::Vector2f(table.getSize().x * 0.15, table.getSize().y * 0.7));
 
 
 
